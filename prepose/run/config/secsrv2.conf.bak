@@ -1,0 +1,18 @@
+#
+# terminal confiuration
+#
+
+comm.max   10
+
+#     Id    encType localPort   remoteAddr:port timeOut NotiFlag NotiFold
+comm   1     01       null      192.168.252.19:6666   1000      0      FFFF
+comm   2     01       null      192.168.252.19:6666   1000      0      FFFF
+comm   3     01       null      192.168.252.19:6666   1000      0      FFFF
+comm   4     01       null      192.168.252.19:6666   1000      0      FFFF
+comm   5     01       null      192.168.252.19:6666   1000      0      FFFF
+comm   6     01       null      192.168.252.19:6666   1000      0      FFFF
+comm   7     01       null      192.168.252.19:6666   1000      0      FFFF
+comm   8     01       null      192.168.252.19:6666   1000      0      FFFF
+comm   9     01       null      192.168.252.19:6666   1000      0      FFFF
+comm   10     01       null      192.168.252.19:6666   1000      0      FFFF
+

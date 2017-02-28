@@ -1,0 +1,38 @@
+
+
+***********************************************************************
+Fatal NI connect error 12540, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=beq)(PROGRAM=/oracle/bin/oracle)(ARGV0=oraclepayeasy)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')(DETACH=NO))(CONNECT_DATA=(CID=(PROGRAM=)(HOST=PayEasy)(USER=dcsp))))
+
+  VERSION INFORMATION:
+	TNS for Intel SVR4 UNIX: Version 8.1.7.0.0 - Production
+	Oracle Bequeath NT Protocol Adapter for Intel SVR4 UNIX: Version 8.1.7.0.0 - Production
+  Time: 21-APR-2009 10:51:04
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12540
+    TNS-12540: TNS:internal limit restriction exceeded
+    ns secondary err code: 12560
+    nt main err code: 510
+    TNS-00510: Internal limit restriction exceeded
+    nt secondary err code: 11
+    nt OS err code: 0
+
+
+***********************************************************************
+Fatal NI connect error 12540, connecting to:
+ (DESCRIPTION=(ADDRESS=(PROTOCOL=beq)(PROGRAM=/oracle/bin/oracle)(ARGV0=oraclepayeasy)(ARGS='(DESCRIPTION=(LOCAL=YES)(ADDRESS=(PROTOCOL=beq)))')(DETACH=NO))(CONNECT_DATA=(CID=(PROGRAM=)(HOST=PayEasy)(USER=dcsp))))
+
+  VERSION INFORMATION:
+	TNS for Intel SVR4 UNIX: Version 8.1.7.0.0 - Production
+	Oracle Bequeath NT Protocol Adapter for Intel SVR4 UNIX: Version 8.1.7.0.0 - Production
+  Time: 21-APR-2009 10:51:04
+  Tracing not turned on.
+  Tns error struct:
+    nr err code: 0
+    ns main err code: 12540
+    TNS-12540: TNS:internal limit restriction exceeded
+    ns secondary err code: 12560
+    nt main err code: 510
+    TNS-00510: Internal limit restriction exceeded

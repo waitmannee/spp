@@ -1,0 +1,919 @@
+#include "ibdcs.h"
+#include "tmcibtms.h"
+#include <unistd.h>
+#include<pthread.h>
+
+static int gs_myFid = -1;
+
+static int num=10;//每秒发送个数
+static int sendCycle=100;//发送周期,以秒为单位
+static int sendtime = 0;//发送报文时间
+static int recvtime = 0; //接收到应答的时间
+
+static int RecvData();
+
+static char   *g_pcBcdaShmPtr;
+
+static void TransRcvSvrExit(int signo)
+{
+    if(signo > 0)
+        dcs_log(0,0,"catch a signal %d\n",signo);
+    if(signo !=0 && signo != SIGTERM && signo != SIGSEGV)
+        return;
+
+    dcs_log(0,0,"AppServer terminated.\n");
+    shm_detach((char *)g_pcBcdaShmPtr);
+    exit(signo);
+}
+
+static int OpenLog()
+{
+    char path[500];
+    char file[520];
+    memset(path,0,sizeof(path));
+    memset(file,0,sizeof(file));
+    getcwd(path,500);
+    sprintf(file,"%s/moniEwp.log",path);
+    return dcs_log_open(file, "moniEwp");
+}
+/*
+模拟EWP消费报文，即订单支付报文
+*/
+int main(int argc, char *argv[])
+{
+ 	struct  tm *tm;
+	time_t  t;
+	char    *ltime;
+	char tmpbuf[100],buffer[1024];
+	char input[7];
+	int s = 0;
+	int fid = 0, s_myFid = 0;
+	int i = 0;
+	int seconds=0;
+	int currentseconds=0,sendnum=0;
+	int totaltime=0;
+	int starttime=0,currenttime=0;
+	memset(tmpbuf, 0, sizeof(tmpbuf));
+	memset(buffer, 0, sizeof( buffer ) );
+	memset(input, 0, sizeof( input ) );
+
+	printf("do a tests=%d",s);
+	s = OpenLog();
+	if(s < 0)
+        exit(1);
+
+	dcs_log(0,0,"模拟EWP消费报文，即订单支付报文 start");
+
+	time(&t);
+    tm = localtime(&t);
+    ltime = ctime(&t);
+
+    sprintf(tmpbuf,"%02d%02d", tm->tm_mon+1,tm->tm_mday);
+    memcpy(tmpbuf+4, ltime+11, 2);
+    memcpy(tmpbuf+6, ltime+14, 2);
+    memcpy(tmpbuf+8, ltime+17, 2);
+	
+	starttime= time((time_t*)NULL);
+	currenttime=starttime;
+	if(sendCycle == 0)
+	{
+		totaltime =100*24*60*60;//100天
+	}
+	else
+	{
+		//totaltime =sendCycle*60;
+		totaltime =sendCycle;
+	}
+	
+	fid = fold_create_folder("HCCP");
+	if( fid <0 )
+		fid = fold_locate_folder("HCCP");
+	if(fid < 0)
+	{
+		dcs_log(0,0,"cannot get folder '%s':%s\n", "HCCP", ise_strerror(errno) );
+		return -1;
+	}
+	//启个线程接收返回，并显示接收返回的时间
+	pthread_t sthread;
+	if(pthread_create(&sthread, NULL, (void *(*)(void *))RecvData, NULL) !=0)
+	{
+		dcs_log(0, 0, "Create thread fail ");
+	}
+	pthread_detach(sthread);
+while(currenttime-starttime<totaltime)//发送周期循环 以秒为单位
+{
+	seconds= time((time_t*)NULL);
+	currentseconds=seconds;
+	for(sendnum=1;sendnum<=num;sendnum++)
+	{
+		memset(buffer, 0, sizeof(buffer));
+		//DataFromEWP(buffer, i);
+		DataFromTestEWP(buffer, sendnum);
+		if(fold_initsys() < 0)
+		{
+			dcs_log(0, 0, "cannot attach to folder system!");
+			return -1;
+		}
+		dcs_log(0,0, "attach to folder system ok !\n");
+		gs_myFid = fold_locate_folder("TRANSRCV");
+		if(gs_myFid < 0)
+		{
+			dcs_log(0,0,"cannot get folder '%s':%s\n", "TRANSRCV", ise_strerror(errno) );
+			return -1;
+		}
+		dcs_log(0,0, "folder myFid=%d", gs_myFid);
+		fold_write(gs_myFid, fid, buffer, strlen(buffer) );
+		sendtime = time((time_t*)NULL);
+		dcs_log(0, 0, "Write finished,Write length =%d, sendtime =%d", s, sendtime);
+		
+	}
+	
+	currentseconds= time((time_t*)NULL);
+	while(currentseconds==seconds)
+	{
+		u_sleep_us(100000);
+		currentseconds = time((time_t*)NULL);
+	}
+	currenttime = time((time_t*)NULL);
+}
+	//DataFromMPOS_yindian(buffer);
+	//DataFromMPOS_liandi(buffer);
+	//DataFromMPOS(buffer); 
+	//DataFromMPOS_liandi2(buffer);
+	/*
+	printf("JYZT:交易状态查询\n");
+	printf("SKCX:收款撤销原笔查询\n");
+	printf("SKTH:收款退货原笔查询\n");
+	printf("DTMB:当天末笔查询\n");
+	printf("HTSKHC:历史收款类查询,有卡号\n");
+	printf("HTDLHC:历史某一种交易查询,有卡号\n");
+	printf("HTSYHC:历史所有类查询,有卡号\n");
+	printf("HTSKNC:历史收款类查询,无卡号\n");
+	printf("HTDLNC:历史某一种交易查询,无卡号\n");
+	printf("HTSYNC:历史所有类查询,无卡号\n");
+	
+	scanf("%s", input);
+	if(memcmp(input, "HT", 2) != 0)
+		DataFromQueryEWP(buffer, input);
+	else if(memcmp(input, "HT", 2) == 0)	
+		DataFromHTQueryEWP(buffer, input, argv[1]);*/
+	
+	//DataFromGLPT(buffer);//测试MPOS密钥生成接口
+	//DataFromSJMPOS(buffer); //测试手机MPOS脚本上送通知交易
+	//DataFromSJRr(buffer);//测试一体机商户收款撤销和退货交易请求
+	/*
+	dcs_log( 0, 0, "ewp data return[%d]:%s.", strlen(buffer), buffer );
+
+
+	dcs_log( 0, 0, "ewp data return:[%s]",  buffer );
+
+    if(fold_initsys() < 0)
+    {
+        dcs_log(0,0, "cannot attach to folder system!");
+        return -1;
+    }
+
+    dcs_log(0,0, "attach to folder system ok !\n");
+
+ //   gs_myFid = fold_locate_folder("TRANSRCV");
+	 gs_myFid = fold_locate_folder("TRANSRCV");
+	//gs_myFid = fold_locate_folder("HTSERVER"); //测试查询模块
+
+	if(gs_myFid < 0)
+    {
+        dcs_log(0,0,"cannot get folder '%s':%s\n", "HTSERVER", ise_strerror(errno) );
+        return -1;
+    }
+
+    dcs_log(0,0, "folder myFid=%d", gs_myFid);
+
+//		fid = fold_locate_folder("EWP_COM");
+
+//	if(fid < 0)
+//   {
+//        dcs_log(0,0,"cannot get folder '%s':%s\n", "EWP_COM", ise_strerror(errno) );
+//        return -1;
+//    }
+
+//   dcs_log(0,0, "link folder fid=%d", fid);
+
+	fold_write(gs_myFid,fid,buffer, strlen(buffer) );
+
+	dcs_log( 0,0, "Write finished,Write length =%d",s);
+	*/
+
+	TransRcvSvrExit(0);
+
+	exit(0);
+}
+
+int RecvData()
+{
+	char buffer[1024];
+	int len = 0;
+	int orgfid = 0;
+	int myFid = 0;
+	int openid = 0;
+	
+	memset(buffer, 0, sizeof(buffer));
+
+	myFid = fold_create_folder("HCCP");
+	if( myFid <0 )
+		myFid = fold_locate_folder("HCCP");
+	if(myFid < 0)
+	{
+		dcs_log(0,0,"cannot get folder '%s':%s\n", "HCCP", ise_strerror(errno) );
+		return -1;
+	}
+	openid = fold_open(myFid);
+	if(openid < 0)
+	{
+		dcs_log(0,0,"open fold fail myFid = %d", myFid);
+		exit(0);
+	}
+	while(1)
+	{
+		len = fold_read(myFid, openid, &orgfid, buffer, sizeof(buffer), 1);
+		recvtime = time((time_t*)NULL);
+		dcs_log(0, 0, "recv finished, recv length =%d, recvtime =%d", len, recvtime);
+		sleep(100);
+	}
+	return 0;
+}
+
+/*模拟一体机测试数据*/
+int DataFromTestEWP(char *buffer, int count)
+{
+	char tmpbuf[256];
+	struct  tm *tm;   
+	time_t  t;
+    time(&t);
+    tm = localtime(&t);
+	int num;
+	
+	sprintf( buffer, "%s", "H3CP");   /*4个字节的报文类型数据*/
+	sprintf( buffer, "%s%s", buffer, "12345");   /*5个字节的TPDU头数据*/
+	sprintf( buffer, "%s%s",buffer, "0200");   /*4个字节的交易类型数据*/
+	sprintf( buffer, "%s%s",buffer, "000000");   /*6个字节的交易处理码*/
+	sprintf(tmpbuf,"%04d%02d%02d",tm->tm_year+1900,tm->tm_mon+1,tm->tm_mday);
+	sprintf( buffer, "%s%s",buffer, tmpbuf);   /*8个字节  接入系统发送交易的日期*/
+	//sprintf( xpebuffer, "%s%s", "BANK", tmpbuf);   /*8个字节  接入系统发送交易的日期*/
+	
+	memset(tmpbuf,0,sizeof(tmpbuf));
+	sprintf(tmpbuf,"%02d%02d%02d",tm->tm_hour,tm->tm_min,tm->tm_sec);
+	sprintf( buffer, "%s%s",buffer, tmpbuf);   /*6个字节  接入系统发送交易的时间*/
+	//sprintf( xpebuffer, "%s%s", xpebuffer, tmpbuf);   /*6个字节  接入系统发送交易的时间*/
+	
+	sprintf( buffer, "%s%s",buffer, "0800");   /*4个字节  接入系统的编号EWP：0100 sk EWP 0400*/
+	sprintf( buffer, "%s%s",buffer, "108");   /*3个字节  交易码 区分业务类型订单支付：210  200老板收款*/
+	sprintf( buffer, "%s%s", buffer, "5");/*交易发起方式 1:pos支付 skEWP: 2*/
+	sprintf( buffer, "%s%s", buffer,"0DF0110030000002");
+	
+	sprintf(buffer,"%s%-20s",buffer,"D1G0060000552");/*20个字节 手机编号IMEI左对齐 不足补空格*/
+	sprintf( buffer,"%s%s",buffer,"SJ000095900");/*11个字节 手机号，例如：15026513236*/
+	
+	memset(tmpbuf,0,sizeof(tmpbuf));
+	sprintf(tmpbuf,"%s%02d%02d%02d%02d%02d%06d","PH15",tm->tm_mon+1,tm->tm_mday,tm->tm_hour,tm->tm_min,tm->tm_sec, count);
+	sprintf(buffer,"%s%-20s",buffer,tmpbuf);
+	//sprintf( xpebuffer, "%s%s", xpebuffer, tmpbuf);   /*20个字节订单号*/
+	
+	num=412;
+	sprintf(buffer,"%s%020d",buffer,num);/*20个字节商户编号 不足左补空格*/
+	
+	sprintf(buffer, "%s%-19s", buffer, "6214441000010103");
+	
+	num =5000;
+	sprintf(buffer,"%s%012d",buffer,num);/*12个字节 金额 右对齐 不足补0*/
+	num =0;
+	sprintf(buffer,"%s%012d",buffer, num);/*12个字节 优惠金额 右对齐 不足0*/
+	sprintf( buffer,"%s%-160s",buffer,"B0393627FFC661F7E7E9A5A5AD61DE1B");
+	sprintf( buffer,"%s%s",buffer,"483ADF3268D13998");/*16个字节的磁道密钥随机数*/
+	
+	sprintf( buffer,"%s%s",buffer,"5D38EB55A6FA16F7");/*密码*/
+	sprintf( buffer,"%s%s",buffer,"C9F387A55CD35C77");/*16个字节pin密钥随机数*/ 
+	sprintf( buffer,"%s%s",buffer,"3AA31C77");/*8个字节的mac值*/ 
+	
+	sprintf( buffer,"%s%s",buffer,"0");/*是否发短信的标记*/
+	sprintf( buffer,"%s%s",buffer,"1");/*终端类型*/
+	sprintf( buffer,"%s%s",buffer,"1");/*IC卡标识*/
+	sprintf( buffer,"%s%s",buffer,"0");/*降级标识*/
+	sprintf( buffer,"%s%s",buffer,"1");/*卡片序列号存在标识*/
+	sprintf( buffer,"%s%s",buffer,"001");/*卡片序列号*/
+	sprintf( buffer,"%s%03d",buffer, 290);/*IC卡数据域*/
+	sprintf( buffer,"%s%s",buffer,"9F2608B2020B98573DC4C39F2701809F101307000103A0A012010A01000008879930AB0E249F37042522CF769F36020CAC950500800080009A031510209C01009F02060000000049005F2A02015682027C009F1A0201569F03060000000000009F3303E0E9C89F34031E03009F3501229F1E0831323334353637388408A0000003330101029F090200209F410400000004");/*55域*/
+	
+	sprintf( buffer,"%s%s",buffer,"0000000000<0.1628.0>");/*20个字节的自定义域*/
+	
+	return 0;
+	
+}
+
+/* 模拟从EWP过来的数据 */
+
+int DataFromEWP(char *buffer, int count)
+{
+	char tmpbuf[256];
+	struct  tm *tm;   
+	time_t  t;
+    time(&t);
+    tm = localtime(&t);
+	int num;
+
+	
+		
+		sprintf( buffer, "%s", "EWPP");   /*4个字节的报文类型数据*/
+		sprintf( buffer, "%s%s", buffer, "12345");   /*5个字节的TPDU头数据*/
+		sprintf( buffer, "%s%s",buffer, "0200");   /*4个字节的交易类型数据*/
+		sprintf( buffer, "%s%s",buffer, "000000");   /*6个字节的交易处理码*/
+		sprintf(tmpbuf,"%04d%02d%02d",tm->tm_year+1900,tm->tm_mon+1,tm->tm_mday);
+		sprintf( buffer, "%s%s",buffer, tmpbuf);   /*8个字节  接入系统发送交易的日期*/
+		memset(tmpbuf,0,sizeof(tmpbuf));
+		sprintf(tmpbuf,"%02d%02d%02d",tm->tm_hour,tm->tm_min,tm->tm_sec);
+		sprintf( buffer, "%s%s",buffer, tmpbuf);   /*6个字节  接入系统发送交易的时间*/
+		sprintf( buffer, "%s%s",buffer, "0900");   /*4个字节  接入系统的编号EWP：0100 sk EWP 0400*/
+		sprintf( buffer, "%s%s",buffer, "108");   /*3个字节  交易码 区分业务类型订单支付：210  200老板收款*/
+		sprintf( buffer, "%s%s" ,buffer, "1");/*交易发起方式 1:pos支付 skEWP: 2*/
+		sprintf( buffer,"%s%s",buffer,"0DF0110030000002");
+		memset(tmpbuf,0,sizeof(tmpbuf));
+		sprintf(tmpbuf,"%s%02d%02d%02d","MOBILEIMEI",tm->tm_hour,tm->tm_min,tm->tm_sec);
+		sprintf(buffer,"%s%-20s",buffer,tmpbuf);/*20个字节 手机编号IMEI左对齐 不足补空格*/
+		sprintf( buffer,"%s%s",buffer,"15026513236");/*11个字节 手机号，例如：15026513236*/
+		memset(tmpbuf,0,sizeof(tmpbuf));
+		sprintf(tmpbuf,"%s%02d%02d%02d%02d%02d%03d","ORDERNO",tm->tm_mon+1,tm->tm_mday,tm->tm_hour,tm->tm_min,tm->tm_sec, count);
+		sprintf(buffer,"%s%-20s",buffer,tmpbuf);
+		num=524;
+		sprintf(buffer,"%s%020d",buffer,num);/*20个字节商户编号 不足左补空格*/
+		sprintf(buffer, "%s%-19s", buffer, "621444100001003016");
+		num =200000;
+		sprintf(buffer,"%s%012d",buffer,num);/*12个字节 金额 右对齐 不足补0*/
+		num =200;
+		sprintf(buffer,"%s%012d",buffer,"200");/*12个字节 优惠金额 右对齐 不足0*/
+		//sprintf( buffer,"%s%-160s",buffer,"D7E2636B605A14278596BCD7877B19DFA2309AF2141C8AE42466118C25D54E548E3B29E20C2C821748BB41114500397F1B41EF750A050DFE9C9D9BA81764B25625DD7C5D3AB2D8B2C4145B4825E8EEF1");
+		sprintf( buffer,"%s%-160s",buffer,"72FBA9BE5416224A3FC09548DEB57101");
+		//sprintf( buffer,"%s%s",buffer,"4321432143214321");/*16个字节的磁道密钥随机数*/
+		sprintf( buffer,"%s%s",buffer,"CD6FF07F2C11A821");/*16个字节的磁道密钥随机数*/
+		//sprintf( buffer,"%s%s",buffer,"DF3C3D60764B2BF6");
+		sprintf( buffer,"%s%s",buffer,"5BFDECA98E2DCE34");
+		//sprintf( buffer,"%s%s",buffer,"1234123412341234");/*16个字节pin密钥随机数*/
+		sprintf( buffer,"%s%s",buffer,"52CFAD07B4EEBB08");/*16个字节pin密钥随机数*/
+		sprintf( buffer,"%s%s",buffer,"0");/*是否发短信的标记*/
+		sprintf( buffer,"%s%s",buffer,"selfdefineselfdefine");/*20个字节的自定义域*/
+	
+	return 0;
+}
+
+int DataFromMPOS(char *buffer)
+{
+	char tmpbuf[256];
+	struct  tm *tm;   time_t  t;
+    time(&t);
+    tm = localtime(&t);
+	int len = 0;
+
+	memset(buffer, 0x00, sizeof(buffer));
+
+	sprintf( buffer, "%s", "MPOS");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	sprintf( buffer, "%s%s", buffer, "12345");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//交易类型    4
+	sprintf( buffer, "%s%s",buffer, "0200");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//交易处理码    6
+	sprintf( buffer, "%s%s",buffer, "310000");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//发送日期    8
+	sprintf(tmpbuf,"%04d%02d%02d",tm->tm_year+1900,tm->tm_mon+1,tm->tm_mday);
+	sprintf( buffer, "%s%s",buffer, tmpbuf);
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//发送时间    6
+	memset(tmpbuf,0,sizeof(tmpbuf));
+	sprintf(tmpbuf,"%02d%02d%02d",tm->tm_hour,tm->tm_min,tm->tm_sec);
+	sprintf( buffer, "%s%s",buffer, tmpbuf);
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//发送机构号    4
+	sprintf( buffer, "%s%s",buffer, "0100");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//交易码    3
+	sprintf( buffer, "%s%s",buffer, "705");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//交易发起方式    1
+	sprintf( buffer, "%s%s" ,buffer, "1");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//KSN编号    20
+	//sprintf( buffer,"%s%s",buffer,"FFFF9876543210E00021");
+	sprintf( buffer,"%s%s",buffer,"38373231310000200005");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//机具编号    20
+	sprintf(buffer,"%s%s", buffer, "SHDY-MPOSM35-1234567");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//用户名    11
+	sprintf( buffer,"%s%s",buffer, "SJ000095900");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//订单号    20
+	sprintf(buffer,"%s%s", buffer, "MV150129110700001M35");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+	
+	//商户编号   20
+	sprintf(buffer,"%s%20d", buffer, 314);
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+	
+	//卡号
+	sprintf(buffer, "%s%s", buffer, "601382188888888888 ");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//磁道	二磁道长度  二磁道内容  三磁道长度  三磁道内容
+	memset(tmpbuf, 0, sizeof(tmpbuf));
+	//sprintf(tmpbuf, "%s", "622260011004012062772cb45585b8e67784");  //二磁道信息21
+	sprintf(tmpbuf, "%s", "622260011004012062d14418548148d82784");  
+	len = strlen(tmpbuf);
+	sprintf(buffer, "%s%02d%s", buffer, len, tmpbuf);   
+	
+	memset(tmpbuf, 0, sizeof(tmpbuf));
+	//sprintf(tmpbuf, "%s", "996222600110040120623d1561560500050001109013000000010000007a1bc08d10f26dd890");  //三磁道信息21
+	sprintf(tmpbuf, "%s", "996222600110040120623d15615605000500011090130000000100000091092e93d898cdab90");   //三磁道信息
+	len = strlen(tmpbuf);
+	sprintf(buffer, "%s%03d%s", buffer, len, tmpbuf); 
+	
+
+	//密码    16
+	//sprintf( buffer,"%s%s",buffer,"58ca94a5a12ebb69");//21
+	sprintf( buffer,"%s%s",buffer,"e5347c08f436bf61");
+
+	//MAC    8
+	//sprintf(buffer, "%s%s", buffer, "9FE98045");//21
+	sprintf(buffer, "%s%s", buffer, "48E3DC01");//48e3dc01 e4303d0e
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	
+	//IC卡标识
+	sprintf( buffer,"%s%s",buffer,"0");
+
+	//卡片序列号存在标识
+	sprintf( buffer,"%s%s",buffer,"0");
+	
+	//IC卡数据域长度
+	sprintf( buffer,"%s%s",buffer,"000");
+
+	//自定义域    20
+	sprintf( buffer,"%s%s",buffer,"selfdefineselfdefine");
+	return 0;
+}
+
+
+
+int DataFromMPOS_yindian(char *buffer)
+{
+	char tmpbuf[256];
+	
+	memset(buffer, 0x00, sizeof(buffer));
+
+	//协议报文头
+	sprintf( buffer, "%s", "YDCE");
+
+	//卡号
+	sprintf(buffer, "%s%s", buffer, "123456789012345678 ");
+
+	//KSN   8
+	sprintf(buffer, "%s%s", buffer, "FFFF9876543210E00006");
+
+	//macblk  32  BCD
+	memset(tmpbuf, 0, sizeof(tmpbuf));
+	asc_to_bcd((unsigned char *)tmpbuf, "3131313131313131313131313131313131313131313131313131313131313131", 64, 0);
+	sprintf(buffer, "%s%s", buffer, tmpbuf);
+	dcs_log(0, 0, "macblk", tmpbuf);
+
+	//mac
+	//sprintf(buffer, "%s%s", buffer,"3407E7A0");
+	//intf(buffer, "%s%s", buffer,"0C0B498C");//3
+	//sprintf(buffer, "%s%s", buffer,"6C70206F");//5
+	//sprintf(buffer, "%s%s", buffer,"E03CBF3D");//4
+	sprintf(buffer, "%s%s", buffer,"CBD446AA");//6
+	//sprintf(buffer, "%s%s", buffer,"E026B3B2");//1
+
+	//磁道	160
+	//sprintf(buffer,"%s%s",buffer, "62144410000199274BA4                                                                                                                                            ");
+	sprintf(buffer, "%s%s",buffer, "621444100092B859D491764E8000                                                                                                                                    ");
+
+	//密码明文    6
+	sprintf( buffer, "%s%s",buffer, "123456");
+	//密码密文    16
+	sprintf( buffer, "%s%s",buffer, "e0c57f868ef445ed");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	return 0;
+}
+
+int DataFromMPOS_liandi(char *buffer)
+{
+	char tmpbuf[256];
+	int len = 0;
+	
+	memset(buffer, 0x00, sizeof(buffer));
+
+	//协议报文头
+	sprintf( buffer, "%s", "YDCE");
+
+	//卡号
+	sprintf(buffer, "%s%s", buffer, "601382188888888888 ");
+
+	//KSN   8
+	sprintf(buffer, "%s%s", buffer, "ffff9876543210e00021");
+
+	//macblk  32  BCD
+	memset(tmpbuf, 0, sizeof(tmpbuf));
+	asc_to_bcd((unsigned char *)tmpbuf, "3131313131313131313131313131313131313131313131313131313131313131", 64, 0);
+	sprintf(buffer, "%s%s", buffer, tmpbuf);
+	dcs_log(0, 0, "macblk", tmpbuf);
+
+	//mac
+	//sprintf(buffer, "%s%s", buffer,"CE49F5FC"); //1f
+	//sprintf(buffer, "%s%s", buffer,"6643A977");  //20   6643a977 7148443d
+	sprintf(buffer, "%s%s", buffer,"9FE98045");  //21  9fe98045 8db0933e
+
+	//磁道	二磁道长度  二磁道内容  三磁道长度  三磁道内容
+	memset(tmpbuf, 0, sizeof(tmpbuf));
+	sprintf(tmpbuf, "%s", "622260011004012062772cb45585b8e67784");  //二磁道信息
+	len = strlen(tmpbuf);
+	sprintf(buffer, "%s%02d%s", buffer, len, tmpbuf);   
+	
+	memset(tmpbuf, 0, sizeof(tmpbuf));
+	sprintf(tmpbuf, "%s", "996222600110040120623d1561560500050001109013000000010000007a1bc08d10f26dd890");  //三磁道信息
+	len = strlen(tmpbuf);
+	sprintf(buffer, "%s%03d%s", buffer, len, tmpbuf); 
+	
+	//密码明文    6
+	sprintf( buffer, "%s%s",buffer, "111111");
+	//密码密文    16
+	sprintf( buffer, "%s%s",buffer, "58ca94a5a12ebb69");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	return 0;
+}
+
+
+int DataFromGLPT(char *buffer)
+{
+	char tembuf[127];
+	
+	memset(buffer, 0x00, sizeof(buffer));
+	memset(tembuf, 0x00, sizeof(tembuf));
+
+	sprintf( buffer, "%s", "GLPT");
+	dcs_log(0, 0, "协议报文头", buffer);
+
+	sprintf( tembuf, "%s",  "12345");
+	sprintf( buffer, "%s%s", buffer, tembuf);
+	dcs_log(0, 0, "TPDU头[%S]", tembuf);
+	
+	sprintf(buffer, "%sAAA802802901005872110000200000872110000400001872110000600000872110000800000872110000A00000", buffer);
+	//sprintf(buffer, "%sAAA0007802802901005872110000200000872110000400001872110000600000872110000800000872110000A00000", buffer);//添加渠道号
+	dcs_log(0, 0, "请求报文[%S]", buffer);
+	return 0;
+}
+
+/*android版本的测试*/
+int DataFromMPOS_liandi2(char *buffer)
+{
+	char tmpbuf[256];
+	int len = 0;
+	
+	memset(buffer, 0x00, sizeof(buffer));
+
+	//协议报文头
+	sprintf( buffer, "%s", "YDCE");
+
+	//卡号
+	sprintf(buffer, "%s%s", buffer, "62270018230014060  ");
+
+	//KSN   8
+	sprintf(buffer, "%s%s", buffer, "38373231310005E000D8");
+
+	//macblk  32  BCD
+	sprintf(buffer, "%s%s", buffer, "11111111111111111111111111111111");
+
+	//mac
+	sprintf(buffer, "%s%s", buffer,"c531f478");  //6bf909bc68b9eae2
+
+	//磁道	二磁道长度  二磁道内容  三磁道长度  三磁道内容
+	memset(tmpbuf, 0, sizeof(tmpbuf));
+	sprintf(tmpbuf, "%s", "6227001216560039517d3c2a09bf0693dcc30");  //二磁道信息
+	len = strlen(tmpbuf);
+	sprintf(buffer, "%s%02d%s", buffer, len, tmpbuf);   
+	
+	len =0;
+	sprintf(buffer, "%s%03d", buffer, len); 
+	
+	//密码明文    6
+	sprintf( buffer, "%s%s",buffer, "123456");
+	//密码密文    16
+	sprintf( buffer, "%s%s",buffer, "032be96b1416272e");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	return 0;
+}
+
+
+//模拟查询交易
+int DataFromQueryEWP(char *buffer, char *input)
+{
+	char tmpbuf[256];
+	struct  tm *tm;   time_t  t;
+    time(&t);
+    tm = localtime(&t);
+	int num = 1;
+
+	sprintf( buffer, "%s", "H3CP");   /*4个字节的报文类型数据*/
+	sprintf( buffer, "%s%s", buffer, "12345");   /*5个字节的TPDU头数据*/
+	sprintf( buffer, "%s%s",buffer, "0200");   /*4个字节的交易类型数据*/
+	
+	if(memcmp(input, "JYZT", 4) == 0)
+		sprintf( buffer, "%s%s",buffer, "9F0000");   /*6个字节的交易处理码*/ 
+	else if(memcmp(input, "SKCX", 4) == 0)
+		sprintf( buffer, "%s%s",buffer, "9F0001");   /*6个字节的交易处理码*/ 
+	else if(memcmp(input, "SKTH", 4) == 0)
+		sprintf( buffer, "%s%s",buffer, "9F0002");   /*6个字节的交易处理码*/ 
+	else if(memcmp(input, "DTMB", 4) == 0)
+		sprintf( buffer, "%s%s",buffer, "9F0003");   /*6个字节的交易处理码*/ 
+	sprintf(tmpbuf,"%04d%02d%02d",tm->tm_year+1900,tm->tm_mon+1,tm->tm_mday);
+	sprintf( buffer, "%s%s",buffer, tmpbuf);   /*8个字节  接入系统发送交易的日期*/
+	memset(tmpbuf,0,sizeof(tmpbuf));
+	sprintf(tmpbuf,"%02d%02d%02d",tm->tm_hour,tm->tm_min,tm->tm_sec);
+	sprintf( buffer, "%s%s",buffer, tmpbuf);   /*6个字节  接入系统发送交易的时间*/
+	sprintf( buffer, "%s%s",buffer, "0800");   /*4个字节  接入系统的编号EWP：0100 sk EWP 0400*/
+	
+	if(memcmp(input, "JYZT", 4) == 0)
+		sprintf( buffer, "%s%s",buffer, "9F0");   /*3个字节的交易码*/ 
+	else if(memcmp(input, "SKCX", 4) == 0)
+		sprintf( buffer, "%s%s",buffer, "200");   /*3个字节的交易码*/ 
+	else if(memcmp(input, "SKTH", 4) == 0)
+		sprintf( buffer, "%s%s",buffer, "200");   /*3个字节的交易码*/ 
+	else if(memcmp(input, "DTMB", 4) == 0)
+		sprintf( buffer, "%s%s",buffer, "9F3");   /*3个字节的交易码*/ 
+	
+	sprintf( buffer,"%s%s",buffer,"0DF0110030000002");
+	memset(tmpbuf,0,sizeof(tmpbuf));
+	sprintf(tmpbuf,"%s","D1G0060000334");
+	sprintf(buffer,"%s%-20s",buffer,tmpbuf);/*20个字节 手机编号IMEI左对齐 不足补空格*/
+	sprintf( buffer,"%s%s",buffer,"SJ000095900");/*11个字节 手机号，例如：15026513236*/
+	
+	if(memcmp(input, "JYZT", 4) == 0)
+	{
+		memset(tmpbuf, 0, sizeof(tmpbuf));
+		sprintf(tmpbuf, "%s", "SH150614184542198387");
+		sprintf(buffer, "%s%-20s", buffer, tmpbuf);
+	}
+	sprintf(buffer,"%s%020d",buffer, num);/*20个字节商户编号 不足左补空格*/
+	
+	if(memcmp(input, "DTMB", 4) == 0)
+		sprintf(buffer, "%s%-19s", buffer, " ");
+	else
+		sprintf(buffer, "%s%-19s", buffer, "6228412320121305911");
+	
+	if(memcmp(input, "SK", 2) == 0)
+	{
+		/*流水*/
+		sprintf(buffer, "%s%s", buffer, "016868"); //9F0001 9F0002
+	}
+	
+	sprintf( buffer,"%s%s",buffer,"selfdefineselfdefine");/*20个字节的自定义域*/
+	return 0;
+}
+
+//模拟历史交易信息查询交易
+int DataFromHTQueryEWP(char *buffer, char *input, char *type)
+{
+	char tmpbuf[256];
+	struct  tm *tm;   time_t  t;
+    time(&t);
+    tm = localtime(&t);
+	int num = 1;
+
+	sprintf( buffer, "%s", "H3CP");   /*4个字节的报文类型数据*/
+	sprintf( buffer, "%s%s", buffer, "12345");   /*5个字节的TPDU头数据*/
+	sprintf( buffer, "%s%s",buffer, "0200");   /*4个字节的交易类型数据*/
+	
+	if(memcmp(input, "HTDL", 4) == 0) //某种交易
+		sprintf( buffer, "%s%s",buffer, "FF0000");   /*6个字节的交易处理码*/
+	else if(memcmp(input, "HTSK", 4) == 0) //收款类
+		sprintf( buffer, "%s%s",buffer, "FF0001");   /*6个字节的交易处理码*/
+	else if(memcmp(input, "HTSY", 4) == 0) //所有类
+		sprintf( buffer, "%s%s",buffer, "FF0002");   /*6个字节的交易处理码*/
+	sprintf( buffer, "%s%s",buffer, "0800");   /*4个字节  接入系统的编号EWP：0100 sk EWP 0400*/
+	
+	if(memcmp(input, "HTDL", 4) == 0) //某种交易
+		sprintf( buffer, "%s%s",buffer, "200");   /*6个字节的交易处理码*/
+	else if(memcmp(input, "HTSK", 4) == 0) //收款类
+		sprintf( buffer, "%s%s",buffer, "000");   /*6个字节的交易处理码*/
+	else if(memcmp(input, "HTSY", 4) == 0) //所有类
+		sprintf( buffer, "%s%s",buffer, "XXX");   /*6个字节的交易处理码*/
+	
+	sprintf( buffer, "%s%s",buffer, "20150601");
+	
+	memset(tmpbuf,0,sizeof(tmpbuf));
+	sprintf(tmpbuf,"%04d%02d%02d",tm->tm_year+1900,tm->tm_mon+1,tm->tm_mday);
+	sprintf( buffer, "%s%s",buffer, tmpbuf);   /*8个字节 结束日期*/
+
+	sprintf( buffer, "%s%d",buffer, 9);   /*每页显示条数*/
+	sprintf( buffer, "%s%03d",buffer, 1);   /*当前页*/
+	
+	sprintf( buffer,"%s%s",buffer,"SJ000095900");/*11个字节 手机号，例如：15026513236*/
+	
+	sprintf( buffer, "%s%s",buffer, type);   /*交易条件, 0,1,2*/
+	if(memcmp(input+4, "HC", 2) == 0)
+		sprintf( buffer, "%s%-19s",buffer, "6228412320121305911");   
+	else if(memcmp(input+4, "NC", 2) == 0)
+		sprintf( buffer, "%s%-19s",buffer, " ");   /*交易卡号*/
+	
+	sprintf( buffer,"%s%s",buffer,"selfdefineselfdefine");/*20个字节的自定义域*/
+	return 0;
+}
+
+//测试手机MPOS脚本上送通知交易请求
+int DataFromSJMPOS(char *buffer)
+{
+	char tmpbuf[256];
+	struct  tm *tm;   time_t  t;
+    time(&t);
+    tm = localtime(&t);
+	int len = 0;
+
+	memset(buffer, 0x00, sizeof(buffer));
+
+	//sprintf( buffer, "%s", "MPOS");
+	sprintf( buffer, "%s", "H3CP");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	sprintf( buffer, "%s%s", buffer, "12345");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//交易类型    4
+	sprintf( buffer, "%s%s",buffer, "0620");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//交易处理码    6
+	sprintf( buffer, "%s%s",buffer, "000000");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//发送日期    8
+	sprintf(tmpbuf,"%04d%02d%02d",tm->tm_year+1900,tm->tm_mon+1,tm->tm_mday);
+	sprintf( buffer, "%s%s",buffer, tmpbuf);
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//发送时间    6
+	memset(tmpbuf,0,sizeof(tmpbuf));
+	sprintf(tmpbuf,"%02d%02d%02d",tm->tm_hour,tm->tm_min,tm->tm_sec);
+	sprintf( buffer, "%s%s",buffer, tmpbuf);
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//发送机构号    4
+	sprintf( buffer, "%s%s",buffer, "0600");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//交易码    3
+	sprintf( buffer, "%s%s",buffer, "041");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//KSN编号    20
+	sprintf( buffer,"%s%s",buffer,"38373231310000200005");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//机具编号    20
+	sprintf(buffer,"%s%s", buffer, "SHDY-MPOSM35-1234567");
+	dcs_log(0, 0, "BUFFER[%s]",buffer);
+
+	//系统参考号 12
+	sprintf( buffer,"%s%s", buffer, "101434013603");
+	//原交易日期 8
+	sprintf( buffer,"%s%s", buffer, "20150616");
+	//IC卡数据域长度
+	sprintf( buffer,"%s%s",buffer,"003123");
+	
+	//mac信息 8个字节
+	sprintf( buffer,"%s%s", buffer, "testmack");
+	//自定义域    20
+	sprintf( buffer,"%s%s",buffer,"selfdefineselfdefine");
+	return 0;
+	
+}
+//模拟测试盛京一体机商户收款撤销和退货
+int DataFromSJRr(char *buffer)
+{
+	char tmpbuf[256];
+	struct  tm *tm;   time_t  t;
+    time(&t);
+    tm = localtime(&t);
+	int len = 0;
+
+	sprintf( buffer, "%s", "H3CP");   /*4个字节的报文类型数据*/
+	len +=4;
+	sprintf( buffer+4, "%s", "12345");//TPDU头
+	len +=5;
+	sprintf( buffer+len, "%s", "0200");   /*4个字节的交易类型数据*/
+	len +=4;
+	//sprintf( buffer+len, "%s", "200000");   /*6个字节的交易处理码*/
+	sprintf( buffer+len, "%s", "270000");   /*6个字节的交易处理码*/
+	len +=6;
+	/*
+	sprintf(tmpbuf,"%04d%02d%02d",tm->tm_year+1900,tm->tm_mon+1,tm->tm_mday);
+	sprintf( buffer+len, "%s", tmpbuf);   //8个字节  接入系统发送交易的日期
+	len +=8;
+	memset(tmpbuf,0,sizeof(tmpbuf));
+	sprintf(tmpbuf,"%02d%02d%02d",tm->tm_hour,tm->tm_min,tm->tm_sec);
+	sprintf( buffer+len , "%s", tmpbuf);   //6个字节  接入系统发送交易的时间
+	len +=6;
+	*/
+	
+	sprintf( buffer+len, "%s", "20150616095050");   //发送日期和时间
+	len +=14;
+	
+	sprintf( buffer+len, "%s", "0800");   /*4个字节  接入系统的编号EWP：0100 sk EWP 0400*/
+	len +=4;
+	
+	//sprintf( buffer+len, "%s", "209");   /*3个字节  交易码 区分业务类型订单支付：210 */
+	sprintf( buffer+len, "%s", "210");   /*3个字节  交易码 区分业务类型订单支付：210 */
+	len +=3;
+	
+	sprintf( buffer+len, "%s" , "5");/*交易发起方式 1:pos支付 skEWP: 2*/
+	len +=1;
+	
+	sprintf( buffer+len, "%s", "0DF0110030000002");
+	len +=16;
+	
+	sprintf(buffer+len, "%-20s", "D1G0060000465");/*20个字节 手机编号IMEI左对齐 不足补空格*/
+	len +=20;
+	
+	sprintf( buffer+len, "%s", "SJ000095900");/*11个字节 手机号，例如：15026513236*/
+	len +=11;
+	
+	sprintf( buffer+len, "%s", "SH150615171025288853");/*20个字节订单号*/
+	len +=20;
+	
+	sprintf(buffer+len, "%020d", 0);/*20个字节商户编号 不足左补空格*/
+	len +=20;
+	
+	sprintf(buffer+len, "%-19s", "6214441000010095");/*20个字节商户编号 不足左补空格*/
+	len +=19;//6214441000010095卡号
+	
+	sprintf( buffer+len, "%s", "0"); //磁道存在标识
+	len +=1;
+	
+	sprintf( buffer+len, "%s", "1"); //密码存在标识
+	len +=1;
+	
+	sprintf( buffer+len, "%s", "FFFFFFFFFFFFFFFF"); //密码
+	len +=16;
+	
+	sprintf( buffer+len, "%s", "FFFFFFFFFFFFFFFF"); //密码随机数
+	len +=16;
+	
+	sprintf( buffer+len, "%s", "000000000010"); //退货金额
+	len +=12;
+	
+	sprintf( buffer+len, "%s", "1"); //终端类型
+	len +=1;
+	
+	sprintf( buffer+len, "%s", "1"); //ic卡标识
+	len +=1;
+	sprintf( buffer+len, "%s", "0"); //降级标识
+	len +=1;
+	
+	sprintf( buffer+len, "%s", "0"); //卡片序列号存在标识
+	len +=1;
+	
+	sprintf( buffer+len, "%s", "171035016902"); //参考号
+	len +=12;
+	
+	sprintf( buffer+len, "%06d", 0); //授权码
+	len +=6;
+	
+	sprintf( buffer+len, "%s", "016902"); //流水号
+	len +=6;
+	
+	sprintf( buffer+len, "%s", "20150616171035"); //原交易日期和时间
+	len +=14;
+	
+	sprintf( buffer+len, "%s", "0"); //是否发送短信标识
+	len +=1;
+	
+	sprintf( buffer+len, "%s", "testmack"); //mack值
+	len +=8;
+	
+	sprintf( buffer+len ,"%s", "selfdefineselfdefine");/*20个字节的自定义域*/
+	len +=20;
+	return 0;
+	
+}
+

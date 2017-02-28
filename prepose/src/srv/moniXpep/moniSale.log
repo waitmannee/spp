@@ -1,0 +1,12 @@
+2014/12/04 11:21:40 ipc_msg.c 111 moniSale(024291) 
+ queue msgctl error:Permission denied,errno:13
+
+2014/12/04 11:21:40 test_syn_http_client.c 48 moniSale(024291) 
+send buffer len:40, 发送队列[107708425]
+0000h: 36 30 32 32 30 30 30 30 30 30 30 30 30 38 36 30 ; 6022000000000860
+0010h: 30 31 30 30 33 30 32 31 30 30 34 36 31 31 32 32 ; 0100302100461122
+0020h: 33 33 34 34 31 33 31 34                         ; 33441314
+
+2014/12/04 11:21:40 test_syn_http_client.c 54 moniSale(024291) 
+queue_send_by_msgtype err
+

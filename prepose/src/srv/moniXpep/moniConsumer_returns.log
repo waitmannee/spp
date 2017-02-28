@@ -1,0 +1,1323 @@
+2012/06/11 16:11:53 moniConsumer_returns(011867) 
+模拟支付系统消费退货的报文 start
+
+2012/06/11 16:11:53 moniConsumer_returns(011867) 
+生产环境上的测试
+
+2012/06/11 16:11:53 moniConsumer_returns(011867) 
+ewp data moniConsumer_returns return[187]:0200270000201206081611530200103CADE000012345678MOBILEIMEI161153    15006111611JW120608194910376                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/11 16:11:53 moniConsumer_returns(011867) 
+attach to folder system ok !
+
+2012/06/11 16:11:53 moniConsumer_returns(011867) 
+folder myFid=1
+
+2012/06/11 16:11:53 moniConsumer_returns(011867) 
+Write finished,Write length =0
+
+2012/06/11 16:11:53 moniConsumer_returns(011867) 
+AppServer terminated.
+
+2012/06/11 16:17:44 moniConsumer_returns(011935) 
+模拟支付系统消费退货的报文 start
+
+2012/06/11 16:17:44 moniConsumer_returns(011935) 
+生产环境上的测试
+
+2012/06/11 16:17:44 moniConsumer_returns(011935) 
+ewp data moniConsumer_returns return[187]:0200270000201206081617440200103CADE000012345678MOBILEIMEI161744    15006111617JW120608194910376                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/11 16:17:44 moniConsumer_returns(011935) 
+attach to folder system ok !
+
+2012/06/11 16:17:44 moniConsumer_returns(011935) 
+folder myFid=1
+
+2012/06/11 16:17:44 moniConsumer_returns(011935) 
+Write finished,Write length =0
+
+2012/06/11 16:17:44 moniConsumer_returns(011935) 
+AppServer terminated.
+
+2012/06/11 16:24:07 moniConsumer_returns(012039) 
+模拟支付系统消费退货的报文 start
+
+2012/06/11 16:24:07 moniConsumer_returns(012039) 
+生产环境上的测试
+
+2012/06/11 16:24:07 moniConsumer_returns(012039) 
+ewp data moniConsumer_returns return[187]:0200270000201206081624070200103CADE000012345678MOBILEIMEI162407    15006111624JW120608194910376                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/11 16:24:07 moniConsumer_returns(012039) 
+attach to folder system ok !
+
+2012/06/11 16:24:07 moniConsumer_returns(012039) 
+folder myFid=1
+
+2012/06/11 16:24:07 moniConsumer_returns(012039) 
+Write finished,Write length =0
+
+2012/06/11 16:24:07 moniConsumer_returns(012039) 
+AppServer terminated.
+
+2012/06/11 16:43:37 moniConsumer_returns(012184) 
+模拟支付系统消费退货的报文 start
+
+2012/06/11 16:43:37 moniConsumer_returns(012184) 
+生产环境上的测试
+
+2012/06/11 16:43:37 moniConsumer_returns(012184) 
+ewp data moniConsumer_returns return[187]:0200270000201206081643370200103CADE000012345678MOBILEIMEI164337    15006111643JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/11 16:43:37 moniConsumer_returns(012184) 
+attach to folder system ok !
+
+2012/06/11 16:43:37 moniConsumer_returns(012184) 
+folder myFid=1
+
+2012/06/11 16:43:37 moniConsumer_returns(012184) 
+Write finished,Write length =0
+
+2012/06/11 16:43:37 moniConsumer_returns(012184) 
+AppServer terminated.
+
+2012/06/11 17:16:32 moniConsumer_returns(012360) 
+模拟支付系统消费退货的报文 start
+
+2012/06/11 17:16:32 moniConsumer_returns(012360) 
+生产环境上的测试
+
+2012/06/11 17:16:32 moniConsumer_returns(012360) 
+ewp data moniConsumer_returns return[187]:0200270000201206081716320200103CADE000012345678MOBILEIMEI171632    15006111716JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/11 17:16:32 moniConsumer_returns(012360) 
+attach to folder system ok !
+
+2012/06/11 17:16:32 moniConsumer_returns(012360) 
+folder myFid=1
+
+2012/06/11 17:16:32 moniConsumer_returns(012360) 
+Write finished,Write length =0
+
+2012/06/11 17:16:32 moniConsumer_returns(012360) 
+AppServer terminated.
+
+2012/06/11 17:24:43 moniConsumer_returns(012368) 
+模拟支付系统消费退货的报文 start
+
+2012/06/11 17:24:43 moniConsumer_returns(012368) 
+生产环境上的测试
+
+2012/06/11 17:24:43 moniConsumer_returns(012368) 
+ewp data moniConsumer_returns return[187]:0200270000201206081724430200103CADE000012345678MOBILEIMEI172443    15006111724JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/11 17:24:43 moniConsumer_returns(012368) 
+attach to folder system ok !
+
+2012/06/11 17:24:43 moniConsumer_returns(012368) 
+folder myFid=1
+
+2012/06/11 17:24:43 moniConsumer_returns(012368) 
+Write finished,Write length =0
+
+2012/06/11 17:24:43 moniConsumer_returns(012368) 
+AppServer terminated.
+
+2012/06/11 17:28:00 moniConsumer_returns(012370) 
+模拟支付系统消费退货的报文 start
+
+2012/06/11 17:28:00 moniConsumer_returns(012370) 
+生产环境上的测试
+
+2012/06/11 17:28:00 moniConsumer_returns(012370) 
+ewp data moniConsumer_returns return[187]:0200270000201206081728000200103CADE000012345678MOBILEIMEI172800    15006111728JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/11 17:28:00 moniConsumer_returns(012370) 
+attach to folder system ok !
+
+2012/06/11 17:28:00 moniConsumer_returns(012370) 
+folder myFid=1
+
+2012/06/11 17:28:00 moniConsumer_returns(012370) 
+Write finished,Write length =0
+
+2012/06/11 17:28:00 moniConsumer_returns(012370) 
+AppServer terminated.
+
+2012/06/11 17:29:23 moniConsumer_returns(012372) 
+模拟支付系统消费退货的报文 start
+
+2012/06/11 17:29:23 moniConsumer_returns(012372) 
+生产环境上的测试
+
+2012/06/11 17:29:23 moniConsumer_returns(012372) 
+ewp data moniConsumer_returns return[187]:0200270000201206081729230200103CADE000012345678MOBILEIMEI172923    15006111729JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/11 17:29:23 moniConsumer_returns(012372) 
+attach to folder system ok !
+
+2012/06/11 17:29:23 moniConsumer_returns(012372) 
+folder myFid=1
+
+2012/06/11 17:29:23 moniConsumer_returns(012372) 
+Write finished,Write length =0
+
+2012/06/11 17:29:23 moniConsumer_returns(012372) 
+AppServer terminated.
+
+2012/06/11 17:30:16 moniConsumer_returns(012383) 
+模拟支付系统消费退货的报文 start
+
+2012/06/11 17:30:16 moniConsumer_returns(012383) 
+生产环境上的测试
+
+2012/06/11 17:30:16 moniConsumer_returns(012383) 
+ewp data moniConsumer_returns return[187]:0200270000201206081730160200103CADE000012345678MOBILEIMEI173016    15006111730JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/11 17:30:16 moniConsumer_returns(012383) 
+attach to folder system ok !
+
+2012/06/11 17:30:16 moniConsumer_returns(012383) 
+folder myFid=1
+
+2012/06/11 17:30:16 moniConsumer_returns(012383) 
+Write finished,Write length =0
+
+2012/06/11 17:30:16 moniConsumer_returns(012383) 
+AppServer terminated.
+
+2012/06/11 17:52:55 moniConsumer_returns(012473) 
+模拟支付系统消费退货的报文 start
+
+2012/06/11 17:52:55 moniConsumer_returns(012473) 
+生产环境上的测试
+
+2012/06/11 17:52:55 moniConsumer_returns(012473) 
+ewp data moniConsumer_returns return[187]:0200270000201206081752550200103CADE000012345678MOBILEIMEI175255    15006111752JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/11 17:52:55 moniConsumer_returns(012473) 
+attach to folder system ok !
+
+2012/06/11 17:52:55 moniConsumer_returns(012473) 
+folder myFid=1
+
+2012/06/11 17:52:55 moniConsumer_returns(012473) 
+Write finished,Write length =0
+
+2012/06/11 17:52:55 moniConsumer_returns(012473) 
+AppServer terminated.
+
+2012/06/11 19:34:19 moniConsumer_returns(012715) 
+模拟支付系统消费退货的报文 start
+
+2012/06/11 19:34:19 moniConsumer_returns(012715) 
+生产环境上的测试
+
+2012/06/11 19:34:19 moniConsumer_returns(012715) 
+ewp data moniConsumer_returns return[187]:0200270000201206081934190200103CADE000012345678MOBILEIMEI193419    15006111934JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/11 19:34:19 moniConsumer_returns(012715) 
+attach to folder system ok !
+
+2012/06/11 19:34:19 moniConsumer_returns(012715) 
+folder myFid=1
+
+2012/06/11 19:34:19 moniConsumer_returns(012715) 
+Write finished,Write length =0
+
+2012/06/11 19:34:19 moniConsumer_returns(012715) 
+AppServer terminated.
+
+2012/06/11 19:45:15 moniConsumer_returns(012789) 
+模拟支付系统消费退货的报文 start
+
+2012/06/11 19:45:15 moniConsumer_returns(012789) 
+生产环境上的测试
+
+2012/06/11 19:45:15 moniConsumer_returns(012789) 
+ewp data moniConsumer_returns return[187]:0200270000201206081945150200103CADE000012345678MOBILEIMEI194515    15006111945JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/11 19:45:15 moniConsumer_returns(012789) 
+attach to folder system ok !
+
+2012/06/11 19:45:15 moniConsumer_returns(012789) 
+folder myFid=1
+
+2012/06/11 19:45:15 moniConsumer_returns(012789) 
+Write finished,Write length =0
+
+2012/06/11 19:45:15 moniConsumer_returns(012789) 
+AppServer terminated.
+
+2012/06/11 19:50:14 moniConsumer_returns(012857) 
+模拟支付系统消费退货的报文 start
+
+2012/06/11 19:50:14 moniConsumer_returns(012857) 
+生产环境上的测试
+
+2012/06/11 19:50:14 moniConsumer_returns(012857) 
+ewp data moniConsumer_returns return[187]:0200270000201206081950140200103CADE000012345678MOBILEIMEI195014    15006111950JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/11 19:50:14 moniConsumer_returns(012857) 
+attach to folder system ok !
+
+2012/06/11 19:50:14 moniConsumer_returns(012857) 
+folder myFid=1
+
+2012/06/11 19:50:14 moniConsumer_returns(012857) 
+Write finished,Write length =0
+
+2012/06/11 19:50:14 moniConsumer_returns(012857) 
+AppServer terminated.
+
+2012/06/12 09:58:40 moniConsumer_returns(013938) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 09:58:40 moniConsumer_returns(013938) 
+生产环境上的测试
+
+2012/06/12 09:58:40 moniConsumer_returns(013938) 
+ewp data moniConsumer_returns return[187]:0200270000201206080958400200103CADE000012345678MOBILEIMEI095840    15006120958JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 09:58:40 moniConsumer_returns(013938) 
+attach to folder system ok !
+
+2012/06/12 09:58:40 moniConsumer_returns(013938) 
+folder myFid=1
+
+2012/06/12 09:58:40 moniConsumer_returns(013938) 
+Write finished,Write length =0
+
+2012/06/12 09:58:40 moniConsumer_returns(013938) 
+AppServer terminated.
+
+2012/06/12 10:07:45 moniConsumer_returns(013955) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 10:07:45 moniConsumer_returns(013955) 
+生产环境上的测试
+
+2012/06/12 10:07:45 moniConsumer_returns(013955) 
+ewp data moniConsumer_returns return[187]:0200270000201206081007450200103CADE000012345678MOBILEIMEI100745    15006121007JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 10:07:45 moniConsumer_returns(013955) 
+attach to folder system ok !
+
+2012/06/12 10:07:45 moniConsumer_returns(013955) 
+folder myFid=1
+
+2012/06/12 10:07:45 moniConsumer_returns(013955) 
+Write finished,Write length =0
+
+2012/06/12 10:07:45 moniConsumer_returns(013955) 
+AppServer terminated.
+
+2012/06/12 10:16:26 moniConsumer_returns(013965) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 10:16:26 moniConsumer_returns(013965) 
+生产环境上的测试
+
+2012/06/12 10:16:26 moniConsumer_returns(013965) 
+ewp data moniConsumer_returns return[187]:0200270000201206081016260200103CADE000012345678MOBILEIMEI101626    15006121016JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 10:16:26 moniConsumer_returns(013965) 
+attach to folder system ok !
+
+2012/06/12 10:16:26 moniConsumer_returns(013965) 
+folder myFid=1
+
+2012/06/12 10:16:26 moniConsumer_returns(013965) 
+Write finished,Write length =0
+
+2012/06/12 10:16:26 moniConsumer_returns(013965) 
+AppServer terminated.
+
+2012/06/12 10:20:14 moniConsumer_returns(013971) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 10:20:14 moniConsumer_returns(013971) 
+生产环境上的测试
+
+2012/06/12 10:20:14 moniConsumer_returns(013971) 
+ewp data moniConsumer_returns return[187]:0200270000201206081020140200103CADE000012345678MOBILEIMEI102014    15006121020JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 10:20:14 moniConsumer_returns(013971) 
+attach to folder system ok !
+
+2012/06/12 10:20:14 moniConsumer_returns(013971) 
+folder myFid=1
+
+2012/06/12 10:20:14 moniConsumer_returns(013971) 
+Write finished,Write length =0
+
+2012/06/12 10:20:14 moniConsumer_returns(013971) 
+AppServer terminated.
+
+2012/06/12 10:33:02 moniConsumer_returns(013987) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 10:33:02 moniConsumer_returns(013987) 
+生产环境上的测试
+
+2012/06/12 10:33:02 moniConsumer_returns(013987) 
+ewp data moniConsumer_returns return[187]:0200270000201206081033020200103CADE000012345678MOBILEIMEI103302    15006121033JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 10:33:02 moniConsumer_returns(013987) 
+attach to folder system ok !
+
+2012/06/12 10:33:02 moniConsumer_returns(013987) 
+folder myFid=1
+
+2012/06/12 10:33:02 moniConsumer_returns(013987) 
+Write finished,Write length =0
+
+2012/06/12 10:33:02 moniConsumer_returns(013987) 
+AppServer terminated.
+
+2012/06/12 10:35:58 moniConsumer_returns(013989) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 10:35:58 moniConsumer_returns(013989) 
+生产环境上的测试
+
+2012/06/12 10:35:58 moniConsumer_returns(013989) 
+ewp data moniConsumer_returns return[187]:0200270000201206081035580200103CADE000012345678MOBILEIMEI103558    15006121035JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 10:35:58 moniConsumer_returns(013989) 
+attach to folder system ok !
+
+2012/06/12 10:35:58 moniConsumer_returns(013989) 
+folder myFid=1
+
+2012/06/12 10:35:58 moniConsumer_returns(013989) 
+Write finished,Write length =0
+
+2012/06/12 10:35:58 moniConsumer_returns(013989) 
+AppServer terminated.
+
+2012/06/12 10:50:42 moniConsumer_returns(014005) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 10:50:42 moniConsumer_returns(014005) 
+生产环境上的测试
+
+2012/06/12 10:50:42 moniConsumer_returns(014005) 
+ewp data moniConsumer_returns return[187]:0200270000201206081050420200103CADE000012345678MOBILEIMEI105042    15006121050JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 10:50:42 moniConsumer_returns(014005) 
+attach to folder system ok !
+
+2012/06/12 10:50:42 moniConsumer_returns(014005) 
+folder myFid=1
+
+2012/06/12 10:50:42 moniConsumer_returns(014005) 
+Write finished,Write length =0
+
+2012/06/12 10:50:42 moniConsumer_returns(014005) 
+AppServer terminated.
+
+2012/06/12 10:58:06 moniConsumer_returns(014010) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 10:58:06 moniConsumer_returns(014010) 
+生产环境上的测试
+
+2012/06/12 10:58:06 moniConsumer_returns(014010) 
+ewp data moniConsumer_returns return[187]:0200270000201206081058060200103CADE000012345678MOBILEIMEI105806    15006121058JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 10:58:06 moniConsumer_returns(014010) 
+attach to folder system ok !
+
+2012/06/12 10:58:06 moniConsumer_returns(014010) 
+folder myFid=1
+
+2012/06/12 10:58:06 moniConsumer_returns(014010) 
+Write finished,Write length =0
+
+2012/06/12 10:58:06 moniConsumer_returns(014010) 
+AppServer terminated.
+
+2012/06/12 10:58:55 moniConsumer_returns(014011) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 10:58:55 moniConsumer_returns(014011) 
+生产环境上的测试
+
+2012/06/12 10:58:55 moniConsumer_returns(014011) 
+ewp data moniConsumer_returns return[187]:0200270000201206081058550200103CADE000012345678MOBILEIMEI105855    15006121058JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 10:58:55 moniConsumer_returns(014011) 
+attach to folder system ok !
+
+2012/06/12 10:58:55 moniConsumer_returns(014011) 
+folder myFid=1
+
+2012/06/12 10:58:55 moniConsumer_returns(014011) 
+Write finished,Write length =0
+
+2012/06/12 10:58:55 moniConsumer_returns(014011) 
+AppServer terminated.
+
+2012/06/12 11:03:07 moniConsumer_returns(014026) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 11:03:07 moniConsumer_returns(014026) 
+生产环境上的测试
+
+2012/06/12 11:03:07 moniConsumer_returns(014026) 
+ewp data moniConsumer_returns return[187]:0200270000201206081103070200103CADE000012345678MOBILEIMEI110307    15006121103JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 11:03:07 moniConsumer_returns(014026) 
+attach to folder system ok !
+
+2012/06/12 11:03:07 moniConsumer_returns(014026) 
+folder myFid=1
+
+2012/06/12 11:03:07 moniConsumer_returns(014026) 
+Write finished,Write length =0
+
+2012/06/12 11:03:07 moniConsumer_returns(014026) 
+AppServer terminated.
+
+2012/06/12 11:15:31 moniConsumer_returns(014037) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 11:15:31 moniConsumer_returns(014037) 
+生产环境上的测试
+
+2012/06/12 11:15:31 moniConsumer_returns(014037) 
+ewp data moniConsumer_returns return[187]:0200270000201206081115310200103CADE000012345678MOBILEIMEI111531    15006121115JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 11:15:31 moniConsumer_returns(014037) 
+attach to folder system ok !
+
+2012/06/12 11:15:31 moniConsumer_returns(014037) 
+folder myFid=1
+
+2012/06/12 11:15:31 moniConsumer_returns(014037) 
+Write finished,Write length =0
+
+2012/06/12 11:15:31 moniConsumer_returns(014037) 
+AppServer terminated.
+
+2012/06/12 11:19:01 moniConsumer_returns(014040) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 11:19:01 moniConsumer_returns(014040) 
+生产环境上的测试
+
+2012/06/12 11:19:01 moniConsumer_returns(014040) 
+ewp data moniConsumer_returns return[187]:0200270000201206081119010200103CADE000012345678MOBILEIMEI111901    15006121119JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 11:19:01 moniConsumer_returns(014040) 
+attach to folder system ok !
+
+2012/06/12 11:19:01 moniConsumer_returns(014040) 
+folder myFid=1
+
+2012/06/12 11:19:01 moniConsumer_returns(014040) 
+Write finished,Write length =0
+
+2012/06/12 11:19:01 moniConsumer_returns(014040) 
+AppServer terminated.
+
+2012/06/12 11:24:56 moniConsumer_returns(014047) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 11:24:56 moniConsumer_returns(014047) 
+生产环境上的测试
+
+2012/06/12 11:24:56 moniConsumer_returns(014047) 
+ewp data moniConsumer_returns return[187]:0200270000201206081124560200103CADE000012345678MOBILEIMEI112456    15006121124JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 11:24:56 moniConsumer_returns(014047) 
+attach to folder system ok !
+
+2012/06/12 11:24:56 moniConsumer_returns(014047) 
+folder myFid=1
+
+2012/06/12 11:24:56 moniConsumer_returns(014047) 
+Write finished,Write length =0
+
+2012/06/12 11:24:56 moniConsumer_returns(014047) 
+AppServer terminated.
+
+2012/06/12 11:30:56 moniConsumer_returns(014060) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 11:30:56 moniConsumer_returns(014060) 
+生产环境上的测试
+
+2012/06/12 11:30:56 moniConsumer_returns(014060) 
+ewp data moniConsumer_returns return[187]:0200270000201206081130560200103CADE000012345678MOBILEIMEI113056    15006121130JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 11:30:56 moniConsumer_returns(014060) 
+attach to folder system ok !
+
+2012/06/12 11:30:56 moniConsumer_returns(014060) 
+folder myFid=1
+
+2012/06/12 11:30:56 moniConsumer_returns(014060) 
+Write finished,Write length =0
+
+2012/06/12 11:30:56 moniConsumer_returns(014060) 
+AppServer terminated.
+
+2012/06/12 11:31:45 moniConsumer_returns(014061) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 11:31:45 moniConsumer_returns(014061) 
+生产环境上的测试
+
+2012/06/12 11:31:45 moniConsumer_returns(014061) 
+ewp data moniConsumer_returns return[187]:0200270000201206081131450200103CADE000012345678MOBILEIMEI113145    15006121131JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 11:31:45 moniConsumer_returns(014061) 
+attach to folder system ok !
+
+2012/06/12 11:31:45 moniConsumer_returns(014061) 
+folder myFid=1
+
+2012/06/12 11:31:45 moniConsumer_returns(014061) 
+Write finished,Write length =0
+
+2012/06/12 11:31:45 moniConsumer_returns(014061) 
+AppServer terminated.
+
+2012/06/12 11:32:48 moniConsumer_returns(014063) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 11:32:48 moniConsumer_returns(014063) 
+生产环境上的测试
+
+2012/06/12 11:32:48 moniConsumer_returns(014063) 
+ewp data moniConsumer_returns return[187]:0200270000201206081132480200103CADE000012345678MOBILEIMEI113248    15006121132JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 11:32:48 moniConsumer_returns(014063) 
+attach to folder system ok !
+
+2012/06/12 11:32:48 moniConsumer_returns(014063) 
+folder myFid=1
+
+2012/06/12 11:32:48 moniConsumer_returns(014063) 
+Write finished,Write length =0
+
+2012/06/12 11:32:48 moniConsumer_returns(014063) 
+AppServer terminated.
+
+2012/06/12 13:16:28 moniConsumer_returns(014257) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 13:16:28 moniConsumer_returns(014257) 
+生产环境上的测试
+
+2012/06/12 13:16:28 moniConsumer_returns(014257) 
+ewp data moniConsumer_returns return[187]:0200270000201206081316280200103CADE000012345678MOBILEIMEI131628    15006121316JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 13:16:28 moniConsumer_returns(014257) 
+attach to folder system ok !
+
+2012/06/12 13:16:28 moniConsumer_returns(014257) 
+folder myFid=1
+
+2012/06/12 13:16:28 moniConsumer_returns(014257) 
+Write finished,Write length =0
+
+2012/06/12 13:16:28 moniConsumer_returns(014257) 
+AppServer terminated.
+
+2012/06/12 13:31:24 moniConsumer_returns(014277) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 13:31:24 moniConsumer_returns(014277) 
+生产环境上的测试
+
+2012/06/12 13:31:24 moniConsumer_returns(014277) 
+ewp data moniConsumer_returns return[187]:0200270000201206081331240200103CADE000012345678MOBILEIMEI133124    15006121331JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 13:31:24 moniConsumer_returns(014277) 
+attach to folder system ok !
+
+2012/06/12 13:31:24 moniConsumer_returns(014277) 
+folder myFid=1
+
+2012/06/12 13:31:24 moniConsumer_returns(014277) 
+Write finished,Write length =0
+
+2012/06/12 13:31:24 moniConsumer_returns(014277) 
+AppServer terminated.
+
+2012/06/12 13:38:25 moniConsumer_returns(014348) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 13:38:25 moniConsumer_returns(014348) 
+生产环境上的测试
+
+2012/06/12 13:38:25 moniConsumer_returns(014348) 
+ewp data moniConsumer_returns return[187]:0200270000201206081338250200103CADE000012345678MOBILEIMEI133825    15006121338JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 13:38:25 moniConsumer_returns(014348) 
+attach to folder system ok !
+
+2012/06/12 13:38:25 moniConsumer_returns(014348) 
+folder myFid=1
+
+2012/06/12 13:38:25 moniConsumer_returns(014348) 
+Write finished,Write length =0
+
+2012/06/12 13:38:25 moniConsumer_returns(014348) 
+AppServer terminated.
+
+2012/06/12 14:01:31 moniConsumer_returns(014379) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 14:01:31 moniConsumer_returns(014379) 
+生产环境上的测试
+
+2012/06/12 14:01:31 moniConsumer_returns(014379) 
+ewp data moniConsumer_returns return[187]:0200270000201206081401310200103CADE000012345678MOBILEIMEI140131    15006121401JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 14:01:31 moniConsumer_returns(014379) 
+attach to folder system ok !
+
+2012/06/12 14:01:31 moniConsumer_returns(014379) 
+folder myFid=1
+
+2012/06/12 14:01:31 moniConsumer_returns(014379) 
+Write finished,Write length =0
+
+2012/06/12 14:01:31 moniConsumer_returns(014379) 
+AppServer terminated.
+
+2012/06/12 14:03:30 moniConsumer_returns(014381) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 14:03:30 moniConsumer_returns(014381) 
+生产环境上的测试
+
+2012/06/12 14:03:30 moniConsumer_returns(014381) 
+ewp data moniConsumer_returns return[187]:0200270000201206081403300200103CADE000012345678MOBILEIMEI140330    15006121403JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 14:03:30 moniConsumer_returns(014381) 
+attach to folder system ok !
+
+2012/06/12 14:03:30 moniConsumer_returns(014381) 
+folder myFid=1
+
+2012/06/12 14:03:30 moniConsumer_returns(014381) 
+Write finished,Write length =0
+
+2012/06/12 14:03:30 moniConsumer_returns(014381) 
+AppServer terminated.
+
+2012/06/12 14:06:19 moniConsumer_returns(014384) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 14:06:19 moniConsumer_returns(014384) 
+生产环境上的测试
+
+2012/06/12 14:06:19 moniConsumer_returns(014384) 
+ewp data moniConsumer_returns return[187]:0200270000201206081406190200103CADE000012345678MOBILEIMEI140619    15006121406JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 14:06:19 moniConsumer_returns(014384) 
+attach to folder system ok !
+
+2012/06/12 14:06:19 moniConsumer_returns(014384) 
+folder myFid=1
+
+2012/06/12 14:06:19 moniConsumer_returns(014384) 
+Write finished,Write length =0
+
+2012/06/12 14:06:19 moniConsumer_returns(014384) 
+AppServer terminated.
+
+2012/06/12 14:31:40 moniConsumer_returns(014471) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 14:31:40 moniConsumer_returns(014471) 
+生产环境上的测试
+
+2012/06/12 14:31:40 moniConsumer_returns(014471) 
+ewp data moniConsumer_returns return[187]:0200270000201206081431400200103CADE000012345678MOBILEIMEI143140    15006121431JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 14:31:40 moniConsumer_returns(014471) 
+attach to folder system ok !
+
+2012/06/12 14:31:40 moniConsumer_returns(014471) 
+folder myFid=1
+
+2012/06/12 14:31:40 moniConsumer_returns(014471) 
+Write finished,Write length =0
+
+2012/06/12 14:31:40 moniConsumer_returns(014471) 
+AppServer terminated.
+
+2012/06/12 14:34:23 moniConsumer_returns(014474) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 14:34:23 moniConsumer_returns(014474) 
+生产环境上的测试
+
+2012/06/12 14:34:23 moniConsumer_returns(014474) 
+ewp data moniConsumer_returns return[187]:0200270000201206081434230200103CADE000012345678MOBILEIMEI143423    15006121434JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 14:34:23 moniConsumer_returns(014474) 
+attach to folder system ok !
+
+2012/06/12 14:34:23 moniConsumer_returns(014474) 
+folder myFid=1
+
+2012/06/12 14:34:23 moniConsumer_returns(014474) 
+Write finished,Write length =0
+
+2012/06/12 14:34:23 moniConsumer_returns(014474) 
+AppServer terminated.
+
+2012/06/12 14:39:27 moniConsumer_returns(014477) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 14:39:27 moniConsumer_returns(014477) 
+生产环境上的测试
+
+2012/06/12 14:39:27 moniConsumer_returns(014477) 
+ewp data moniConsumer_returns return[187]:0200270000201206081439270200103CADE000012345678MOBILEIMEI143927    15006121439JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 14:39:27 moniConsumer_returns(014477) 
+attach to folder system ok !
+
+2012/06/12 14:39:27 moniConsumer_returns(014477) 
+folder myFid=1
+
+2012/06/12 14:39:27 moniConsumer_returns(014477) 
+Write finished,Write length =0
+
+2012/06/12 14:39:27 moniConsumer_returns(014477) 
+AppServer terminated.
+
+2012/06/12 14:50:49 moniConsumer_returns(014491) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 14:50:49 moniConsumer_returns(014491) 
+生产环境上的测试
+
+2012/06/12 14:50:49 moniConsumer_returns(014491) 
+ewp data moniConsumer_returns return[187]:0200270000201206081450490200103CADE000012345678MOBILEIMEI145049    15006121450JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 14:50:49 moniConsumer_returns(014491) 
+attach to folder system ok !
+
+2012/06/12 14:50:49 moniConsumer_returns(014491) 
+folder myFid=1
+
+2012/06/12 14:50:49 moniConsumer_returns(014491) 
+Write finished,Write length =0
+
+2012/06/12 14:50:49 moniConsumer_returns(014491) 
+AppServer terminated.
+
+2012/06/12 14:51:49 moniConsumer_returns(014492) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 14:51:49 moniConsumer_returns(014492) 
+生产环境上的测试
+
+2012/06/12 14:51:49 moniConsumer_returns(014492) 
+ewp data moniConsumer_returns return[187]:0200270000201206081451490200103CADE000012345678MOBILEIMEI145149    15006121451JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 14:51:49 moniConsumer_returns(014492) 
+attach to folder system ok !
+
+2012/06/12 14:51:49 moniConsumer_returns(014492) 
+folder myFid=1
+
+2012/06/12 14:51:49 moniConsumer_returns(014492) 
+Write finished,Write length =0
+
+2012/06/12 14:51:49 moniConsumer_returns(014492) 
+AppServer terminated.
+
+2012/06/12 15:08:30 moniConsumer_returns(014698) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 15:08:30 moniConsumer_returns(014698) 
+生产环境上的测试
+
+2012/06/12 15:08:30 moniConsumer_returns(014698) 
+ewp data moniConsumer_returns return[187]:0200270000201206081508300200103CADE000012345678MOBILEIMEI150830    15006121508JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 15:08:30 moniConsumer_returns(014698) 
+attach to folder system ok !
+
+2012/06/12 15:08:30 moniConsumer_returns(014698) 
+folder myFid=1
+
+2012/06/12 15:08:30 moniConsumer_returns(014698) 
+Write finished,Write length =0
+
+2012/06/12 15:08:30 moniConsumer_returns(014698) 
+AppServer terminated.
+
+2012/06/12 15:10:56 moniConsumer_returns(014823) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 15:10:56 moniConsumer_returns(014823) 
+生产环境上的测试
+
+2012/06/12 15:10:56 moniConsumer_returns(014823) 
+ewp data moniConsumer_returns return[187]:0200270000201206081510560200103CADE000012345678MOBILEIMEI151056    15006121510JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 15:10:56 moniConsumer_returns(014823) 
+attach to folder system ok !
+
+2012/06/12 15:10:56 moniConsumer_returns(014823) 
+folder myFid=1
+
+2012/06/12 15:10:56 moniConsumer_returns(014823) 
+Write finished,Write length =0
+
+2012/06/12 15:10:56 moniConsumer_returns(014823) 
+AppServer terminated.
+
+2012/06/12 15:22:53 moniConsumer_returns(014837) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 15:22:53 moniConsumer_returns(014837) 
+生产环境上的测试
+
+2012/06/12 15:22:53 moniConsumer_returns(014837) 
+ewp data moniConsumer_returns return[187]:0200270000201206081522530200103CADE000012345678MOBILEIMEI152253    15006121522JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 15:22:53 moniConsumer_returns(014837) 
+attach to folder system ok !
+
+2012/06/12 15:22:53 moniConsumer_returns(014837) 
+folder myFid=1
+
+2012/06/12 15:22:53 moniConsumer_returns(014837) 
+Write finished,Write length =0
+
+2012/06/12 15:22:53 moniConsumer_returns(014837) 
+AppServer terminated.
+
+2012/06/12 15:31:30 moniConsumer_returns(014851) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 15:31:30 moniConsumer_returns(014851) 
+生产环境上的测试
+
+2012/06/12 15:31:30 moniConsumer_returns(014851) 
+ewp data moniConsumer_returns return[187]:0200270000201206081531300200103CADE000012345678MOBILEIMEI153130    15006121531JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 15:31:30 moniConsumer_returns(014851) 
+attach to folder system ok !
+
+2012/06/12 15:31:30 moniConsumer_returns(014851) 
+folder myFid=1
+
+2012/06/12 15:31:30 moniConsumer_returns(014851) 
+Write finished,Write length =0
+
+2012/06/12 15:31:30 moniConsumer_returns(014851) 
+AppServer terminated.
+
+2012/06/12 15:36:50 moniConsumer_returns(014855) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 15:36:50 moniConsumer_returns(014855) 
+生产环境上的测试
+
+2012/06/12 15:36:50 moniConsumer_returns(014855) 
+ewp data moniConsumer_returns return[187]:0200270000201206081536500200103CADE000012345678MOBILEIMEI153650    15006121536JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 15:36:50 moniConsumer_returns(014855) 
+attach to folder system ok !
+
+2012/06/12 15:36:50 moniConsumer_returns(014855) 
+folder myFid=1
+
+2012/06/12 15:36:50 moniConsumer_returns(014855) 
+Write finished,Write length =0
+
+2012/06/12 15:36:50 moniConsumer_returns(014855) 
+AppServer terminated.
+
+2012/06/12 15:43:30 moniConsumer_returns(014866) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 15:43:30 moniConsumer_returns(014866) 
+生产环境上的测试
+
+2012/06/12 15:43:30 moniConsumer_returns(014866) 
+ewp data moniConsumer_returns return[187]:0200270000201206081543300200103CADE000012345678MOBILEIMEI154330    15006121543JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 15:43:30 moniConsumer_returns(014866) 
+attach to folder system ok !
+
+2012/06/12 15:43:30 moniConsumer_returns(014866) 
+folder myFid=1
+
+2012/06/12 15:43:30 moniConsumer_returns(014866) 
+Write finished,Write length =0
+
+2012/06/12 15:43:30 moniConsumer_returns(014866) 
+AppServer terminated.
+
+2012/06/12 17:13:42 moniConsumer_returns(015179) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 17:13:42 moniConsumer_returns(015179) 
+生产环境上的测试
+
+2012/06/12 17:13:42 moniConsumer_returns(015179) 
+ewp data moniConsumer_returns return[187]:0200270000201206081713420200103CADE000012345678MOBILEIMEI171342    15006121713JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 17:13:42 moniConsumer_returns(015179) 
+attach to folder system ok !
+
+2012/06/12 17:13:42 moniConsumer_returns(015179) 
+folder myFid=1
+
+2012/06/12 17:13:42 moniConsumer_returns(015179) 
+Write finished,Write length =0
+
+2012/06/12 17:13:42 moniConsumer_returns(015179) 
+AppServer terminated.
+
+2012/06/12 17:17:45 moniConsumer_returns(015182) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 17:17:45 moniConsumer_returns(015182) 
+生产环境上的测试
+
+2012/06/12 17:17:45 moniConsumer_returns(015182) 
+ewp data moniConsumer_returns return[187]:0200270000201206081717450200103CADE000012345678MOBILEIMEI171745    15006121717JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 17:17:45 moniConsumer_returns(015182) 
+attach to folder system ok !
+
+2012/06/12 17:17:45 moniConsumer_returns(015182) 
+folder myFid=1
+
+2012/06/12 17:17:45 moniConsumer_returns(015182) 
+Write finished,Write length =0
+
+2012/06/12 17:17:45 moniConsumer_returns(015182) 
+AppServer terminated.
+
+2012/06/12 17:19:59 moniConsumer_returns(015184) 
+模拟支付系统消费退货的报文 start
+
+2012/06/12 17:19:59 moniConsumer_returns(015184) 
+生产环境上的测试
+
+2012/06/12 17:19:59 moniConsumer_returns(015184) 
+ewp data moniConsumer_returns return[187]:0200270000201206081719590200103CADE000012345678MOBILEIMEI171959    15006121719JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/12 17:19:59 moniConsumer_returns(015184) 
+attach to folder system ok !
+
+2012/06/12 17:19:59 moniConsumer_returns(015184) 
+folder myFid=1
+
+2012/06/12 17:19:59 moniConsumer_returns(015184) 
+Write finished,Write length =0
+
+2012/06/12 17:19:59 moniConsumer_returns(015184) 
+AppServer terminated.
+
+2012/06/13 09:13:39 moniConsumer_returns(016333) 
+模拟支付系统消费退货的报文 start
+
+2012/06/13 09:13:39 moniConsumer_returns(016333) 
+生产环境上的测试
+
+2012/06/13 09:13:39 moniConsumer_returns(016333) 
+ewp data moniConsumer_returns return[187]:0200270000201206080913390200103CADE000012345678MOBILEIMEI091339    15006130913JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/13 09:13:39 moniConsumer_returns(016333) 
+attach to folder system ok !
+
+2012/06/13 09:13:39 moniConsumer_returns(016333) 
+folder myFid=1
+
+2012/06/13 09:13:39 moniConsumer_returns(016333) 
+Write finished,Write length =0
+
+2012/06/13 09:13:39 moniConsumer_returns(016333) 
+AppServer terminated.
+
+2012/06/13 09:15:06 moniConsumer_returns(016363) 
+模拟支付系统消费退货的报文 start
+
+2012/06/13 09:15:06 moniConsumer_returns(016363) 
+生产环境上的测试
+
+2012/06/13 09:15:06 moniConsumer_returns(016363) 
+ewp data moniConsumer_returns return[187]:0200270000201206080915060200103CADE000012345678MOBILEIMEI091506    15006130915JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/13 09:15:06 moniConsumer_returns(016363) 
+attach to folder system ok !
+
+2012/06/13 09:15:06 moniConsumer_returns(016363) 
+folder myFid=1
+
+2012/06/13 09:15:06 moniConsumer_returns(016363) 
+Write finished,Write length =0
+
+2012/06/13 09:15:06 moniConsumer_returns(016363) 
+AppServer terminated.
+
+2012/06/13 09:16:36 moniConsumer_returns(016365) 
+模拟支付系统消费退货的报文 start
+
+2012/06/13 09:16:36 moniConsumer_returns(016365) 
+生产环境上的测试
+
+2012/06/13 09:16:36 moniConsumer_returns(016365) 
+ewp data moniConsumer_returns return[187]:0200270000201206080916360200103CADE000012345678MOBILEIMEI091636    15006130916JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/13 09:16:36 moniConsumer_returns(016365) 
+attach to folder system ok !
+
+2012/06/13 09:16:36 moniConsumer_returns(016365) 
+folder myFid=1
+
+2012/06/13 09:16:36 moniConsumer_returns(016365) 
+Write finished,Write length =0
+
+2012/06/13 09:16:36 moniConsumer_returns(016365) 
+AppServer terminated.
+
+2012/06/13 09:19:07 moniConsumer_returns(016367) 
+模拟支付系统消费退货的报文 start
+
+2012/06/13 09:19:07 moniConsumer_returns(016367) 
+生产环境上的测试
+
+2012/06/13 09:19:07 moniConsumer_returns(016367) 
+ewp data moniConsumer_returns return[187]:0200270000201206080919070200103CADE000012345678MOBILEIMEI091907    15006130919JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/13 09:19:07 moniConsumer_returns(016367) 
+attach to folder system ok !
+
+2012/06/13 09:19:07 moniConsumer_returns(016367) 
+folder myFid=1
+
+2012/06/13 09:19:07 moniConsumer_returns(016367) 
+Write finished,Write length =0
+
+2012/06/13 09:19:07 moniConsumer_returns(016367) 
+AppServer terminated.
+
+2012/06/13 09:27:09 moniConsumer_returns(016375) 
+模拟支付系统消费退货的报文 start
+
+2012/06/13 09:27:09 moniConsumer_returns(016375) 
+生产环境上的测试
+
+2012/06/13 09:27:09 moniConsumer_returns(016375) 
+ewp data moniConsumer_returns return[187]:0200270000201206080927090200103CADE000012345678MOBILEIMEI092709    15006130927JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/13 09:27:09 moniConsumer_returns(016375) 
+attach to folder system ok !
+
+2012/06/13 09:27:09 moniConsumer_returns(016375) 
+folder myFid=1
+
+2012/06/13 09:27:09 moniConsumer_returns(016375) 
+Write finished,Write length =0
+
+2012/06/13 09:27:09 moniConsumer_returns(016375) 
+AppServer terminated.
+
+2012/06/13 09:50:42 moniConsumer_returns(016429) 
+模拟支付系统消费退货的报文 start
+
+2012/06/13 09:50:42 moniConsumer_returns(016429) 
+生产环境上的测试
+
+2012/06/13 09:50:42 moniConsumer_returns(016429) 
+ewp data moniConsumer_returns return[187]:0200270000201206080950420200103CADE000012345678MOBILEIMEI095042    15006130950JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/13 09:50:42 moniConsumer_returns(016429) 
+attach to folder system ok !
+
+2012/06/13 09:50:42 moniConsumer_returns(016429) 
+folder myFid=1
+
+2012/06/13 09:50:42 moniConsumer_returns(016429) 
+Write finished,Write length =0
+
+2012/06/13 09:50:42 moniConsumer_returns(016429) 
+AppServer terminated.
+
+2012/06/13 10:40:08 moniConsumer_returns(016655) 
+模拟支付系统消费退货的报文 start
+
+2012/06/13 10:40:08 moniConsumer_returns(016655) 
+生产环境上的测试
+
+2012/06/13 10:40:08 moniConsumer_returns(016655) 
+ewp data moniConsumer_returns return[187]:0200270000201206081040080200103CADE000012345678MOBILEIMEI104008    15006131040JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/13 10:40:08 moniConsumer_returns(016655) 
+attach to folder system ok !
+
+2012/06/13 10:40:08 moniConsumer_returns(016655) 
+folder myFid=1
+
+2012/06/13 10:40:08 moniConsumer_returns(016655) 
+Write finished,Write length =0
+
+2012/06/13 10:40:08 moniConsumer_returns(016655) 
+AppServer terminated.
+
+2012/06/13 10:41:49 moniConsumer_returns(016660) 
+模拟支付系统消费退货的报文 start
+
+2012/06/13 10:41:49 moniConsumer_returns(016660) 
+生产环境上的测试
+
+2012/06/13 10:41:49 moniConsumer_returns(016660) 
+ewp data moniConsumer_returns return[187]:0200270000201206081041490200103CADE000012345678MOBILEIMEI104149    15006131041JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/13 10:41:49 moniConsumer_returns(016660) 
+attach to folder system ok !
+
+2012/06/13 10:41:49 moniConsumer_returns(016660) 
+folder myFid=1
+
+2012/06/13 10:41:49 moniConsumer_returns(016660) 
+Write finished,Write length =0
+
+2012/06/13 10:41:49 moniConsumer_returns(016660) 
+AppServer terminated.
+
+2012/06/13 10:45:34 moniConsumer_returns(016730) 
+模拟支付系统消费退货的报文 start
+
+2012/06/13 10:45:34 moniConsumer_returns(016730) 
+生产环境上的测试
+
+2012/06/13 10:45:34 moniConsumer_returns(016730) 
+ewp data moniConsumer_returns return[187]:0200270000201206081045340200103CADE000012345678MOBILEIMEI104534    15006131045JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/13 10:45:34 moniConsumer_returns(016730) 
+attach to folder system ok !
+
+2012/06/13 10:45:34 moniConsumer_returns(016730) 
+folder myFid=1
+
+2012/06/13 10:45:34 moniConsumer_returns(016730) 
+Write finished,Write length =0
+
+2012/06/13 10:45:34 moniConsumer_returns(016730) 
+AppServer terminated.
+
+2012/06/13 10:54:49 moniConsumer_returns(016859) 
+模拟支付系统消费退货的报文 start
+
+2012/06/13 10:54:49 moniConsumer_returns(016859) 
+生产环境上的测试
+
+2012/06/13 10:54:49 moniConsumer_returns(016859) 
+ewp data moniConsumer_returns return[187]:0200270000201206131054490200103CADE000012345678MOBILEIMEI105449    15006131054JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/13 10:54:49 moniConsumer_returns(016859) 
+attach to folder system ok !
+
+2012/06/13 10:54:49 moniConsumer_returns(016859) 
+folder myFid=1
+
+2012/06/13 10:54:49 moniConsumer_returns(016859) 
+Write finished,Write length =0
+
+2012/06/13 10:54:49 moniConsumer_returns(016859) 
+AppServer terminated.
+
+2012/06/13 11:03:32 moniConsumer_returns(016999) 
+模拟支付系统消费退货的报文 start
+
+2012/06/13 11:03:32 moniConsumer_returns(016999) 
+生产环境上的测试
+
+2012/06/13 11:03:32 moniConsumer_returns(016999) 
+ewp data moniConsumer_returns return[187]:0200270000201206131103320200103CADE000012345678MOBILEIMEI110332    15006131103JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/13 11:03:32 moniConsumer_returns(016999) 
+attach to folder system ok !
+
+2012/06/13 11:03:32 moniConsumer_returns(016999) 
+folder myFid=1
+
+2012/06/13 11:03:32 moniConsumer_returns(016999) 
+Write finished,Write length =0
+
+2012/06/13 11:03:32 moniConsumer_returns(016999) 
+AppServer terminated.
+
+2012/06/13 11:10:55 moniConsumer_returns(017004) 
+模拟支付系统消费退货的报文 start
+
+2012/06/13 11:10:55 moniConsumer_returns(017004) 
+生产环境上的测试
+
+2012/06/13 11:10:55 moniConsumer_returns(017004) 
+ewp data moniConsumer_returns return[187]:0200270000201206131110550200103CADE000012345678MOBILEIMEI111055    15006131110JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/13 11:10:55 moniConsumer_returns(017004) 
+attach to folder system ok !
+
+2012/06/13 11:10:55 moniConsumer_returns(017004) 
+folder myFid=1
+
+2012/06/13 11:10:55 moniConsumer_returns(017004) 
+Write finished,Write length =0
+
+2012/06/13 11:10:55 moniConsumer_returns(017004) 
+AppServer terminated.
+
+2012/06/13 11:26:26 moniConsumer_returns(017086) 
+模拟支付系统消费退货的报文 start
+
+2012/06/13 11:26:26 moniConsumer_returns(017086) 
+生产环境上的测试
+
+2012/06/13 11:26:26 moniConsumer_returns(017086) 
+ewp data moniConsumer_returns return[187]:0200270000201206131126260200103CADE000012345678MOBILEIMEI112626    15006131126JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/13 11:26:26 moniConsumer_returns(017086) 
+attach to folder system ok !
+
+2012/06/13 11:26:26 moniConsumer_returns(017086) 
+folder myFid=1
+
+2012/06/13 11:26:26 moniConsumer_returns(017086) 
+Write finished,Write length =0
+
+2012/06/13 11:26:26 moniConsumer_returns(017086) 
+AppServer terminated.
+
+2012/06/13 12:29:29 moniConsumer_returns(017157) 
+模拟支付系统消费退货的报文 start
+
+2012/06/13 12:29:29 moniConsumer_returns(017157) 
+生产环境上的测试
+
+2012/06/13 12:29:29 moniConsumer_returns(017157) 
+ewp data moniConsumer_returns return[187]:0200270000201206131229290200103CADE000012345678MOBILEIMEI122929    15006131229JW120608185502794                    524622202100109855081400000000000118545631518301234500000420120608184944.
+
+2012/06/13 12:29:29 moniConsumer_returns(017157) 
+attach to folder system ok !
+
+2012/06/13 12:29:29 moniConsumer_returns(017157) 
+folder myFid=1
+
+2012/06/13 12:29:29 moniConsumer_returns(017157) 
+Write finished,Write length =0
+
+2012/06/13 12:29:29 moniConsumer_returns(017157) 
+AppServer terminated.
+

@@ -1,0 +1,108 @@
+2012/09/04 16:14:28 moniQuirty(002644) 
+模拟EWP查询报文 start
+
+2012/09/04 16:14:28 moniQuirty(002644) 
+ewp data Inquiry return[157]:02009F00002012090416142801009F0DY20120904161428MOBILEIMEI161428    15009041614ORDERNO161428                        5246013825005000163153selfdefineselfdefine.
+
+2012/09/04 16:14:28 moniQuirty(002644) 
+attach to folder system ok !
+
+2012/09/04 16:14:28 moniQuirty(002644) 
+folder myFid=1
+
+2012/09/04 16:14:28 moniQuirty(002644) 
+Write finished,Write length =0
+
+2012/09/04 16:14:28 moniQuirty(002644) 
+AppServer terminated.
+
+2012/09/04 16:19:14 moniQuirty(002647) 
+模拟EWP查询报文 start
+
+2012/09/04 16:19:14 moniQuirty(002647) 
+ewp data Inquiry return[157]:02009F00002012090416191401009F0DY20120904161914MOBILEIMEI161914    15009041619ORDERNO161914                        5246013825005000163153selfdefineselfdefine.
+
+2012/09/04 16:19:14 moniQuirty(002647) 
+attach to folder system ok !
+
+2012/09/04 16:19:14 moniQuirty(002647) 
+folder myFid=1
+
+2012/09/04 16:19:14 moniQuirty(002647) 
+Write finished,Write length =0
+
+2012/09/04 16:19:14 moniQuirty(002647) 
+AppServer terminated.
+
+2012/09/04 16:23:52 moniQuirty(002718) 
+模拟EWP查询报文 start
+
+2012/09/04 16:23:52 moniQuirty(002718) 
+ewp data Inquiry return[157]:02009F00002012090416235201009F0DY20120904162352MOBILEIMEI162352    15009041623ORDERNO160813                        5246013825005000163153selfdefineselfdefine.
+
+2012/09/04 16:23:52 moniQuirty(002718) 
+attach to folder system ok !
+
+2012/09/04 16:23:52 moniQuirty(002718) 
+folder myFid=1
+
+2012/09/04 16:23:52 moniQuirty(002718) 
+Write finished,Write length =0
+
+2012/09/04 16:23:52 moniQuirty(002718) 
+AppServer terminated.
+
+2012/09/05 15:01:37 moniQuirty(004915) 
+模拟EWP查询报文 start
+
+2012/09/05 15:01:37 moniQuirty(004915) 
+ewp data Inquiry return[157]:02009F00002012090515013701009F0DY20120905150137MOBILEIMEI150137    15009051501ORDERNO160813                        5246013825005000163153selfdefineselfdefine.
+
+2012/09/05 15:01:37 moniQuirty(004915) 
+attach to folder system ok !
+
+2012/09/05 15:01:37 moniQuirty(004915) 
+folder myFid=1
+
+2012/09/05 15:01:37 moniQuirty(004915) 
+Write finished,Write length =0
+
+2012/09/05 15:01:37 moniQuirty(004915) 
+AppServer terminated.
+
+2012/09/05 15:06:13 moniQuirty(005045) 
+模拟EWP查询报文 start
+
+2012/09/05 15:06:13 moniQuirty(005045) 
+ewp data Inquiry return[157]:02009F00002012090515061301009F0DY20120905150613MOBILEIMEI150613    15009051506ORDERNO0905150613                    5246013825005000163153selfdefineselfdefine.
+
+2012/09/05 15:06:13 moniQuirty(005045) 
+attach to folder system ok !
+
+2012/09/05 15:06:13 moniQuirty(005045) 
+folder myFid=1
+
+2012/09/05 15:06:13 moniQuirty(005045) 
+Write finished,Write length =0
+
+2012/09/05 15:06:13 moniQuirty(005045) 
+AppServer terminated.
+
+2012/09/05 15:19:46 moniQuirty(005126) 
+模拟EWP查询报文 start
+
+2012/09/05 15:19:46 moniQuirty(005126) 
+ewp data Inquiry return[157]:02009F00002012090515194601009F0DY20120905151946MOBILEIMEI151946    15009051519ORDERNO0905151946                    5246013825005000163153selfdefineselfdefine.
+
+2012/09/05 15:19:46 moniQuirty(005126) 
+attach to folder system ok !
+
+2012/09/05 15:19:46 moniQuirty(005126) 
+folder myFid=1
+
+2012/09/05 15:19:46 moniQuirty(005126) 
+Write finished,Write length =0
+
+2012/09/05 15:19:46 moniQuirty(005126) 
+AppServer terminated.
+

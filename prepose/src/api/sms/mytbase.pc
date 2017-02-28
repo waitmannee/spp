@@ -1,0 +1,723 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <sqlca.h>
+#include <oraca.h>
+#include <unistd.h>
+#include <sys/time.h>
+
+#include "mytbase.h"
+
+EXEC SQL INCLUDE SQLCA;
+EXEC SQL INCLUDE ORACA;
+EXEC ORACLE OPTION (ORACA=YES);
+EXEC ORACLE OPTION (release_cursor=yes);
+
+
+
+/************************************基本操作****************************************/
+
+
+/*连接数据库*/
+
+int ConnectDb(char *username,char *passwd,char *dbname)
+{
+	EXEC SQL BEGIN DECLARE SECTION;
+		char	v_username[256];
+		char  v_passwd[256];
+		char  v_dbname[256];
+	EXEC SQL END DECLARE SECTION;
+	char msg[2048];
+	
+	strcpy(v_username,username);
+	strcpy(v_passwd,passwd);
+	strcpy(v_dbname,dbname);
+	if (strcmp(v_dbname,"")==0)
+		EXEC SQL CONNECT :v_username IDENTIFIED BY :v_passwd;
+	else
+		EXEC SQL CONNECT :v_username IDENTIFIED BY :v_passwd USING :v_dbname;
+  if(sqlca.sqlcode!=0)
+  {
+   
+    sprintf(msg,"connect to database error : sqlcode is %d,%s, "
+    	"u: %s p: %s,dbn: %s\n",sqlca.sqlcode,sqlca.sqlerrm.sqlerrmc,v_username,v_passwd,v_dbname);
+    writelog(msg,2);
+    return 0;
+  };    
+	return 1;
+}
+
+/*断开数据库连接*/
+void DisconnectDb()
+{   
+   char msg[2048];
+   
+   EXEC SQL ROLLBACK WORK RELEASE;
+   sprintf(msg,"disconnect database successful !\n");
+   /*writelog(msg,2);*/
+}
+
+
+
+/*取得参数*/
+int GetPara(char *paraid,char *value)
+{
+   EXEC SQL BEGIN DECLARE SECTION;
+      char v_value[50+1];
+      char v_paraid[30+1];
+   EXEC SQL END DECLARE SECTION;
+   char msg[2048];
+   
+   strcpy(v_paraid,paraid);
+   strcpy(value,"");
+   
+   
+   EXEC SQL select para_value into :v_value from basic_para 
+        where para_id=:v_paraid;
+   
+   if (sqlca.sqlcode!=0)
+   {
+   		strcpy(value,"");
+   		sprintf(msg,"取得参数 %s 失败：失败代码：%d,%s \n",v_paraid,sqlca.sqlcode,sqlca.sqlerrm.sqlerrmc);
+   		writelog(msg,2);
+   		EXEC SQL rollback;
+   		return 0;
+   		
+   }
+   
+   strcpy(value,Allt(v_value));
+   
+   printf("取得参数 %s 的值为：%s \n",v_paraid,value);
+   EXEC SQL commit;
+   return 1;
+   
+}
+
+/*修改系统参数*/
+int UpdatePara(char *paraid,char *value)
+{
+   EXEC SQL BEGIN DECLARE SECTION;
+      char v_value[50+1];
+      char v_paraid[30+1];
+      
+      int d_count;
+   EXEC SQL END DECLARE SECTION;
+   
+   char msg[2048];
+   
+   strcpy(v_paraid,paraid);
+   strcpy(v_value,value);
+   
+   d_count=0;
+   
+   EXEC SQL select count(*) into :d_count from basic_para 
+        where para_id=:v_paraid;
+   if (d_count==0)
+   {
+   		sprintf(msg,"参数 %s 在系统参数表内不存在！\n",v_paraid);
+   		writelog(msg,2);
+   		return 0;
+   }
+   EXEC SQL update basic_para set para_value=:v_value 
+   			where para_id=:v_paraid;
+   
+   if (sqlca.sqlcode!=0)
+   {
+   		sprintf(msg,"修改参数 %s 失败：失败代码：%d,%s \n",v_paraid,sqlca.sqlcode,sqlca.sqlerrm.sqlerrmc);
+   		writelog(msg,2);
+   		EXEC SQL rollback;
+   		return 0;   		
+   }
+   EXEC SQL commit;
+   return 1;
+   
+}
+
+int SndMobileMsg(char * begdatetime)
+{
+	EXEC SQL BEGIN DECLARE SECTION;
+		char v_sysstan[10];
+		char v_txdate[12];
+		char v_pro_time[20];
+		char v_txcode[6];
+		char sms_concode[6];
+		char v_callno[40];
+		char v_describe[128];
+		char v_mobileflg[6];
+		char v_mobilecode[100];
+		char v_trans_mercode[20];
+		char v_mercode[20];
+		char v_cdno[50];
+		char v_incardno[60];
+		char v_routeid[10];
+		char v_samno[20+1];
+			
+		float totalamount;
+		int d_num;
+		int dd_num;
+		long l_amount=0;
+		
+		
+		char v_sndtimectl[20];
+		int ctl_num;
+		int total_num;
+		
+		char v_sndmsg[1024];
+		float nowamount;
+		
+		char v_djtdt[20];
+		char enddttime[20];
+		
+	EXEC SQL END DECLARE SECTION;
+	
+	int msg_num=0;
+	int tmp_num=0;
+	int djt_num=0;
+	int cd_num=0;
+	int cd_len=0;
+	char tmp[256];
+	char tmp_cdno[20];
+	
+	char riderinfo[256];
+	
+	char months[4];
+	char day[4];
+	char hours[4];
+	char mins[4];	
+	char msg[2048];
+	char djt_str[256];
+	int i=0;
+	
+	strcpy(v_sndtimectl,begdatetime);
+	
+		
+	/*取系统参数send_msg_trd_date_ctl*/
+	if (v_sndtimectl[0]=='A')
+	{
+		if (GetPara("send_msg_trd_date_ctl",v_sndtimectl)!=1)
+		{
+			return 0;
+		}
+	}
+	
+	memset(v_djtdt,0,20);
+	memcpy(v_djtdt,v_sndtimectl,8);
+	
+	/*检索交易中的成功交易*/
+	EXEC SQL select count(*),nvl(max(msg_update_time),'0') into :d_num,:enddttime
+	from ctl_trade_list_sms
+	where msg_update_time>:v_sndtimectl and v_tradestau='00' and v_source='1'
+	and v_succflag='0';
+	
+	if (sqlca.sqlcode!=0)
+	{
+		sprintf(msg,"检索新增交易失败,起始时间:%s！,错误代码:%s!",v_sndtimectl,sqlca.sqlcode);
+		writelog(msg,2);
+		return 0;
+	}
+	if (d_num<=0)
+		return 1;
+	
+	sleep(1);
+	
+	EXEC SQL select count(*) into :d_num from ctl_trade_list_sms
+	where (msg_update_time > :v_sndtimectl) and (msg_update_time<=:enddttime)
+	and v_tradestau='00' and v_source='1';
+	
+	if (sqlca.sqlcode!=0)
+	{
+		sprintf(msg,"检索新增交易失败,起始时间:%s！,错误代码:%s!",v_sndtimectl,sqlca.sqlcode);
+		writelog(msg,2);
+		return 0;
+	}
+	
+	EXEC SQL declare msg_cur cursor for
+  		select v_sysstan,v_txdate,v_pro_time,v_txcode,sms_concode,
+  				nvl(v_callno,' '),to_number(nvl(v_txamt,0)),nvl(v_describe,' '),
+					nvl(v_mobileflg,' '),nvl(v_mobilecode,' '),nvl(v_mercode,'0'),
+					nvl(v_trans_mercode,'0'),nvl(v_cdno,'0'),nvl(v_incardno,' '),
+					nvl(v_samno,' ')
+					from ctl_trade_list_sms
+					where (msg_update_time > :v_sndtimectl) and (msg_update_time<=:enddttime) 
+					and v_tradestau='00'
+					and v_source='1' and v_succflag='0';
+	EXEC SQL open msg_cur;
+	
+	dd_num=0;
+	while(1)
+	{
+		EXEC SQL fetch msg_cur into :v_sysstan,:v_txdate,:v_pro_time,:v_txcode,:sms_concode,
+  				:v_callno,:l_amount,:v_describe,:v_mobileflg,:v_mobilecode,:v_mercode,:v_trans_mercode,
+  				:v_cdno,:v_incardno,:v_samno;
+  	Allt(v_sysstan);
+  	Allt(v_txdate);
+  	Allt(v_pro_time);
+  	Allt(v_txcode);
+  	Allt(sms_concode);
+  	Allt(v_callno);
+  	Allt(v_describe);
+  	
+  	Allt(v_mobileflg);
+  	Allt(v_mobilecode);
+  	Allt(v_mercode);
+  	Allt(v_trans_mercode);
+  	Allt(v_cdno);
+  	Allt(v_incardno);
+  	Allt(v_samno);
+  	
+		memset(months,0,4);
+		memset(day,0,4);
+		memset(hours,0,4);
+		memset(mins,0,4);
+		if (v_txdate!=""&&strlen(v_txdate)>=10)
+		{
+			memcpy(months,v_txdate,2);
+			memcpy(day,v_txdate+2,2);
+			memcpy(hours,v_txdate+4,2);
+			memcpy(mins,v_txdate+6,2);
+		}
+		
+		memset(riderinfo,' ',256);
+		msg_num=strlen(v_sysstan);
+		if (msg_num>6)
+			msg_num=6;
+		memcpy(riderinfo,v_sysstan,msg_num);
+		msg_num=strlen(v_txdate);
+		if (msg_num>10)
+			msg_num=10;
+		memcpy(riderinfo+6,v_txdate,msg_num);
+		msg_num=strlen(v_txcode);
+		if (msg_num>3)
+			msg_num=3;
+		memcpy(riderinfo+16,v_txcode,msg_num);
+		msg_num=strlen(sms_concode);
+		if (msg_num>3)
+			msg_num=3;
+		memcpy(riderinfo+19,sms_concode,msg_num);
+		msg_num=strlen(v_mercode);
+		if (msg_num>15)
+			msg_num=15;
+		memcpy(riderinfo+22,v_mercode,msg_num);
+		msg_num=strlen(v_samno);
+		if (msg_num>16)
+			msg_num=16;
+		memcpy(riderinfo+37,v_samno,msg_num);
+		msg_num=strlen(v_callno);
+		if (msg_num>40)
+			msg_num=40;
+		memcpy(riderinfo+53,v_callno,msg_num);
+		riderinfo[93]=0;
+		
+  	if ((strcmp(v_mobileflg,"1")==0)&&(strcmp(v_mobilecode,"")!=0))
+  	{
+  		EXEC SQL select nvl(max(ctl_num),-1) into :ctl_num from mobile_msg_ctl
+  			where get_mobile_type='1' 
+  			and (ctl_mercode=:v_mercode or ctl_mercode=:v_trans_mercode or ctl_mercode ='-') 
+  			and ((ctl_txcode=:v_txcode and ctl_concode=:sms_concode) or(ctl_txcode='-' and ctl_concode='-'));
+  		if (sqlca.sqlcode!=0)
+  		{
+  			sprintf(msg,"检索短信配置表失败,错误代码:%d!",v_sndtimectl,sqlca.sqlcode);
+				writelog(msg,2);
+				dd_num++;
+  			if (dd_num>=d_num)
+  				break;
+  			continue ;
+  		}
+  		if (ctl_num==-1)
+  		{
+  			dd_num++;
+  			if (dd_num>=d_num)
+  				break;
+  			continue ;
+  		}
+  		
+  		EXEC SQL select msg_desc,route_id into :v_sndmsg,:v_routeid
+  			from mobile_msg_ctl
+  			where get_mobile_type='1' and ctl_num =:ctl_num
+  			and (ctl_mercode=:v_mercode or ctl_mercode=:v_trans_mercode or ctl_mercode ='-') 
+  			and ((ctl_txcode=:v_txcode and ctl_concode=:sms_concode) or(ctl_txcode='-' and ctl_concode='-'))
+  			and rownum<2;
+  		Allt(v_sndmsg);
+  		Allt(v_routeid);
+  		msg_num=strlen(v_sndmsg);
+  		
+  		djt_num=0;
+  		memset(msg,0,2048);
+  		for(i=0;i<msg_num;i++)
+  		{
+  			memset(tmp,0,256);
+  			if(v_sndmsg[i]=='#')
+  			{
+  				tmp_num=0;
+  				for(i=i+1;i<msg_num;i++)
+  				{
+  					if (v_sndmsg[i]=='#')
+  					{
+  						i++;
+  						break;
+  					}
+  					tmp[tmp_num]=v_sndmsg[i];
+  					tmp_num++;
+  				}
+  				if (tmp_num!=0)
+  				{
+  					if (strcmp(tmp,"M")==0)/*月*/
+  					{
+  						memcpy(msg+djt_num,months,2);
+  						djt_num=djt_num+2;
+  					}
+  					else if(strcmp(tmp,"D")==0)/*日*/
+  					{
+  						memcpy(msg+djt_num,day,2);
+  						djt_num=djt_num+2;
+  					}
+  					else if(strcmp(tmp,"H")==0)/*小时*/
+  					{
+  						memcpy(msg+djt_num,hours,2);
+  						djt_num=djt_num+2;
+  					}
+  					else if(strcmp(tmp,"m")==0)/*分*/
+  					{
+  						memcpy(msg+djt_num,mins,2);
+  						djt_num=djt_num+2;
+  					}
+  					else if (strcmp(tmp,"CDNO")==0)/*转出卡号*/
+  					{
+  						memcpy(msg+djt_num,v_cdno,strlen(v_cdno));
+  						djt_num=djt_num+strlen(v_cdno);
+  					}
+  					else if (strcmp(tmp,"ICDNO")==0)/*转入卡号*/
+  					{
+  						memcpy(msg+djt_num,v_incardno,strlen(v_incardno));
+  						djt_num=djt_num+strlen(v_incardno);
+  					}
+  					else if (strcmp(tmp,"RMB")==0)/*金额*/
+  					{
+  						nowamount=l_amount/100.00;
+  						sprintf(djt_str,"%.2lf 元",nowamount);
+  						memcpy(msg+djt_num,djt_str,strlen(djt_str));
+  						djt_num=djt_num+strlen(djt_str);
+  					}
+  					else if (strcmp(tmp,"TERM")==0)/*终端号码*/
+  					{
+  						memcpy(msg+djt_num,v_callno,strlen(v_callno));
+  						djt_num=djt_num+strlen(v_callno);
+  					}
+  					else if (strcmp(tmp,"DESC")==0)/*交易描述*/
+  					{
+  						memcpy(msg+djt_num,v_describe,strlen(v_describe));
+  						djt_num=djt_num+strlen(v_describe);
+  					}
+  					else if(strcmp(tmp,"TRMB")==0||strcmp(tmp,"TCOUNT")==0) /*当日总金额，当日总笔数*/
+  					{
+  						EXEC SQL select count(*),nvl(sum(to_number(v_txamt))/100,0) into :total_num,:totalamount
+								from ctl_trade_list_sms
+								where v_callno=:v_callno
+									and substr(v_pro_time,1,8)=:v_djtdt and v_tradestau='00'
+									and v_succflag='0'
+									and v_proccode<>'300000';
+							if (sqlca.sqlcode!=0)
+							{
+								sprintf(msg,"查询总金额总笔数出错,错误代码：%d ！",sqlca.sqlcode);
+								writelog(msg,2);
+								total_num=-1;
+								totalamount=-1;
+							}
+							if (strcmp(tmp,"TRMB")==0)
+							{
+	  						sprintf(djt_str,"%.2lf 元",totalamount);
+	  						memcpy(msg+djt_num,djt_str,strlen(djt_str));
+	  						djt_num=djt_num+strlen(djt_str);
+							}
+							if (strcmp(tmp,"TCOUNT")==0)
+							{
+	  						sprintf(djt_str,"%d 笔",total_num);
+	  						memcpy(msg+djt_num,djt_str,strlen(djt_str));
+	  						djt_num=djt_num+strlen(djt_str);
+							}
+  					}
+  					else if (strstr(tmp,"ICDNO")!=NULL)/*部分转入卡号*/
+  					{
+  						cd_len=strlen(tmp);
+							memset(tmp_cdno,0,20);
+						  if (cd_len==6)
+						  {
+						  	tmp_cdno[0]=tmp[5];
+						  	sscanf(tmp_cdno,"%d",&cd_num);
+						  	cd_len=strlen(v_incardno);
+						  	if ((cd_num>0)&&(cd_num<10)&&(cd_num<cd_len))
+						  	{
+						  		memset(tmp_cdno,0,20);
+						  		memcpy(tmp_cdno,v_incardno+(cd_len-cd_num),cd_num);
+						  		memcpy(msg+djt_num,tmp_cdno,cd_num);
+						  		djt_num=djt_num+cd_num;
+						  	}
+						  	else
+						  	{
+						  		sprintf(msg,"配置的转换参数不能识别,参数值：%s！",tmp);
+									writelog(msg,2);
+						  	}
+						  }
+						  else
+						  {
+						 		sprintf(msg,"配置的转换参数不能识别,参数值：%s！",tmp);
+								writelog(msg,2);
+						 	}
+  					}
+  					else if (strstr(tmp,"CDNO")!=NULL)/*部分转出卡号*/
+  					{
+  						cd_len=strlen(tmp);
+							memset(tmp_cdno,0,20);
+						  if (cd_len==5)
+						  {
+						  	tmp_cdno[0]=tmp[4];
+						  	sscanf(tmp_cdno,"%d",&cd_num);
+						  	cd_len=strlen(v_cdno);
+						  	if ((cd_num>0)&&(cd_num<10)&&(cd_num<cd_len))
+						  	{
+						  		memset(tmp_cdno,0,20);
+						  		memcpy(tmp_cdno,v_cdno+(cd_len-cd_num),cd_num);
+						  		memcpy(msg+djt_num,tmp_cdno,cd_num);
+						  		djt_num=djt_num+cd_num;
+						  	}
+						  	else
+						  	{
+						  		sprintf(msg,"配置的转换参数不能识别,参数值：%s！",tmp);
+									writelog(msg,2);
+						  	}
+						  }
+						  else
+						  {
+						 		sprintf(msg,"配置的转换参数不能识别,参数值：%s！",tmp);
+								writelog(msg,2);
+						 	}
+  					}
+  					else
+						{
+							sprintf(msg,"配置的转换参数不能识别,参数值：%s！",tmp);
+							writelog(msg,2);
+						}
+  				}  				
+  			}
+  			if (i>=msg_num)
+  				break;
+  			msg[djt_num]=v_sndmsg[i];
+  			djt_num++;
+
+  		}
+  
+  		printf("v_mobilecode = %s\n",v_mobilecode);
+  		printf("msg = %s\n",msg);
+  		printf("v_routeid = %s\n",v_routeid);
+  		printf("riderinfo = %s\n",riderinfo);
+  		
+  		SendMsg_api("12345678","123456","B",v_mobilecode,msg,v_routeid,"1",riderinfo);
+  	}	/*从交易表得到手机号结束*/
+  	else	/*从资料表得到手机号*/
+  	{
+  		if (strcmp(v_callno,"")==0)/*没有终端号码*/
+  		{
+  			dd_num++;
+  			if (dd_num>=d_num)
+  				break;
+  			continue ;
+  		}
+  			
+  		if (v_callno[0]=='0')/*终端号码带区号*/
+  		{
+  			EXEC SQL select nvl(bangdingmobile,'-') into :v_mobilecode
+					from cs_sys_terminal
+					where areano||terminalno = :v_callno
+							and rownum<2
+							and bangdingmsg_flag='1'
+							and trim(bangdingmobile) is not null;
+				if (sqlca.sqlcode!=0)
+				{
+					dd_num++;
+	  			if (dd_num>=d_num)
+	  				break;
+	  			continue ;
+				}
+  		}
+  		else /*终端号码不带区号*/
+  		{
+  			EXEC SQL select nvl(bangdingmobile,'-') into :v_mobilecode
+					from cs_sys_terminal
+					where terminalno =:v_callno
+							and rownum<2
+							and bangdingmsg_flag='1'
+							and trim(bangdingmobile) is not null;
+				if (sqlca.sqlcode!=0)
+				{
+					dd_num++;
+	  			if (dd_num>=d_num)
+	  				break;
+	  			continue ;
+				}
+  		}
+  		
+  		Allt(v_mobilecode);
+			if (v_mobilecode[0]=='-')
+			{
+				dd_num++;
+  			if (dd_num>=d_num)
+  				break;
+  			continue ;
+			}
+  		
+  		EXEC SQL select nvl(max(ctl_num),-1) into :ctl_num from mobile_msg_ctl
+  			where get_mobile_type='2' 
+  			and (ctl_mercode=:v_mercode or ctl_mercode=:v_trans_mercode or ctl_mercode ='-') 
+  			and ((ctl_txcode=:v_txcode and ctl_concode=:sms_concode) or(ctl_txcode='-' and ctl_concode='-'));
+  		if (sqlca.sqlcode!=0)
+  		{
+  			sprintf(msg,"检索短信配置表失败,错误代码:%d!",v_sndtimectl,sqlca.sqlcode);
+				writelog(msg,2);
+				dd_num++;
+  			if (dd_num>=d_num)
+  				break;
+  			continue ;
+  		}
+  		if (ctl_num==-1)
+  		{
+  			dd_num++;
+  			if (dd_num>=d_num)
+  				break;
+  			continue ;
+  		}
+  		
+  		EXEC SQL select msg_desc,route_id into :v_sndmsg,:v_routeid 
+  			from mobile_msg_ctl
+  			where get_mobile_type='2' and ctl_num =:ctl_num
+  			and (ctl_mercode=:v_mercode or ctl_mercode=:v_trans_mercode or ctl_mercode ='-') 
+  			and ((ctl_txcode=:v_txcode and ctl_concode=:sms_concode) or (ctl_txcode='-' and ctl_concode='-'))
+  			and rownum<2;
+  		Allt(v_sndmsg);
+  		Allt(v_routeid);
+  		msg_num=strlen(v_sndmsg);
+  		djt_num=0;
+  		memset(msg,0,2048);
+  		for(i=0;i<msg_num;i++)
+  		{
+  			memset(tmp,0,256);
+  			if(v_sndmsg[i]=='#')
+  			{
+  				tmp_num=0;
+  				for(i=i+1;i<msg_num;i++)
+  				{
+  					if (v_sndmsg[i]=='#')
+  					{
+  						i++;
+  						break;
+  					}
+  					tmp[tmp_num]=v_sndmsg[i];
+  					tmp_num++;
+  				}
+  				if (tmp_num!=0)
+  				{
+  					if (strcmp(tmp,"M")==0)/*月*/
+  					{
+  						memcpy(msg+djt_num,months,2);
+  						djt_num=djt_num+2;
+  					}
+  					else if(strcmp(tmp,"D")==0)/*日*/
+  					{
+  						memcpy(msg+djt_num,day,2);
+  						djt_num=djt_num+2;
+  					}
+  					else if(strcmp(tmp,"H")==0)/*小时*/
+  					{
+  						memcpy(msg+djt_num,hours,2);
+  						djt_num=djt_num+2;
+  					}
+  					else if(strcmp(tmp,"m")==0)/*分*/
+  					{
+  						memcpy(msg+djt_num,mins,2);
+  						djt_num=djt_num+2;
+  					}
+  					else if (strcmp(tmp,"CDNO")==0)/*转出卡号*/
+  					{
+  						memcpy(msg+djt_num,tmp_cdno,4);
+  						djt_num=djt_num+4;
+  					}
+  					else if (strcmp(tmp,"ICDNO")==0)/*转入卡号*/
+  					{
+  						memcpy(msg+djt_num,v_incardno,strlen(v_incardno));
+  						djt_num=djt_num+strlen(v_incardno);
+  					}
+  					else if (strcmp(tmp,"RMB")==0)/*金额*/
+  					{
+  						nowamount=l_amount/100.00;
+  						sprintf(djt_str,"%.2lf",nowamount);
+  						memcpy(msg+djt_num,djt_str,strlen(djt_str));
+  						djt_num=djt_num+strlen(djt_str);
+  					}
+  					else if (strcmp(tmp,"TERM")==0)/*终端号码*/
+  					{
+  						memcpy(msg+djt_num,v_callno,strlen(v_callno));
+  						djt_num=djt_num+strlen(v_callno);
+  					}
+  					else if (strcmp(tmp,"DESC")==0)/*交易描述*/
+  					{
+  						memcpy(msg+djt_num,v_describe,strlen(v_describe));
+  						djt_num=djt_num+strlen(v_describe);
+  					}
+  					else if(strcmp(tmp,"TRMB")==0||strcmp(tmp,"TCOUNT")==0) /*当日总金额，当日总笔数*/
+  					{
+  						EXEC SQL select count(*),nvl(sum(to_number(v_txamt))/100,0) into :total_num,:totalamount
+								from ctl_trade_list_sms
+								where v_callno=:v_callno
+									and substr(v_pro_time,1,8)=:v_djtdt and v_tradestau='00'
+									and v_succflag='0'
+									and v_proccode<>'300000';
+							if (sqlca.sqlcode!=0)
+							{
+								sprintf(msg,"查询总金额总笔数出错,错误代码：%d ！",sqlca.sqlcode);
+								writelog(msg,2);
+								total_num=-1;
+								totalamount=-1;
+							}
+							if (strcmp(tmp,"TRMB")==0)
+							{
+	  						sprintf(djt_str,"%.2lf 元",totalamount);
+	  						memcpy(msg+djt_num,djt_str,strlen(djt_str));
+	  						djt_num=djt_num+strlen(djt_str);
+							}
+							if (strcmp(tmp,"TCOUNT")==0)
+							{
+	  						sprintf(djt_str,"%d 笔",total_num);
+	  						memcpy(msg+djt_num,djt_str,strlen(djt_str));
+	  						djt_num=djt_num+strlen(djt_str);
+							}
+  					}
+  					else
+						{
+							sprintf(msg,"配置的转换参数不能识别,参数值：%s！",tmp);
+							writelog(msg,2);
+						}
+  				}  				
+  			}
+  			if (i>=msg_num)
+  				break;
+  			msg[djt_num]=v_sndmsg[i];
+  			djt_num++;
+  		}  		
+  		SendMsg_api("12345678","123456","B",v_mobilecode,msg,v_routeid,"1",riderinfo);
+  	}
+  	dd_num++;
+  	
+  	if (dd_num>=d_num)
+  		break;
+	}
+	EXEC SQL update basic_para set para_value=:enddttime
+		where para_id='send_msg_trd_date_ctl';
+	if (sqlca.sqlcode!=0)
+	{
+		sprintf(msg,"更新参数表参值出错，更新值为：%s!,错误代码：%d ！",enddttime,sqlca.sqlcode);
+		writelog(msg,2);
+		EXEC SQL rollback;
+		return 0;
+	}
+	EXEC SQL commit;
+	return 1;
+}

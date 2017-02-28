@@ -1,0 +1,504 @@
+2012/06/12 16:07:22 moniConsumer_revoked(014891) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 16:07:22 moniConsumer_revoked(014891) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 16:07:22 moniConsumer_revoked(014891) 
+ewp data moniConsumer_revoked return[175]:0200200000201206081607220200103CADE000012345678MOBILEIMEI160722    15006121607ORDERNO073531                        524622202100109855081418545631518301234500000420120608184944.
+
+2012/06/12 16:07:22 moniConsumer_revoked(014891) 
+attach to folder system ok !
+
+2012/06/12 16:07:22 moniConsumer_revoked(014891) 
+folder myFid=1
+
+2012/06/12 16:07:22 moniConsumer_revoked(014891) 
+Write finished,Write length =0
+
+2012/06/12 16:07:22 moniConsumer_revoked(014891) 
+AppServer terminated.
+
+2012/06/12 16:15:34 moniConsumer_revoked(014959) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 16:15:34 moniConsumer_revoked(014959) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 16:15:34 moniConsumer_revoked(014959) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121615340200103CADE000012345678MOBILEIMEI161534    15006121615JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 16:15:34 moniConsumer_revoked(014959) 
+attach to folder system ok !
+
+2012/06/12 16:15:34 moniConsumer_revoked(014959) 
+folder myFid=1
+
+2012/06/12 16:15:34 moniConsumer_revoked(014959) 
+Write finished,Write length =0
+
+2012/06/12 16:15:34 moniConsumer_revoked(014959) 
+AppServer terminated.
+
+2012/06/12 16:27:16 moniConsumer_revoked(014969) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 16:27:16 moniConsumer_revoked(014969) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 16:27:16 moniConsumer_revoked(014969) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121627160200103CADE000012345678MOBILEIMEI162716    15006121627JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 16:27:16 moniConsumer_revoked(014969) 
+attach to folder system ok !
+
+2012/06/12 16:27:16 moniConsumer_revoked(014969) 
+folder myFid=1
+
+2012/06/12 16:27:16 moniConsumer_revoked(014969) 
+Write finished,Write length =0
+
+2012/06/12 16:27:16 moniConsumer_revoked(014969) 
+AppServer terminated.
+
+2012/06/12 16:31:16 moniConsumer_revoked(014981) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 16:31:16 moniConsumer_revoked(014981) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 16:31:16 moniConsumer_revoked(014981) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121631160200103CADE000012345678MOBILEIMEI163116    15006121631JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 16:31:16 moniConsumer_revoked(014981) 
+attach to folder system ok !
+
+2012/06/12 16:31:16 moniConsumer_revoked(014981) 
+folder myFid=1
+
+2012/06/12 16:31:16 moniConsumer_revoked(014981) 
+Write finished,Write length =0
+
+2012/06/12 16:31:16 moniConsumer_revoked(014981) 
+AppServer terminated.
+
+2012/06/12 16:38:25 moniConsumer_revoked(014986) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 16:38:25 moniConsumer_revoked(014986) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 16:38:25 moniConsumer_revoked(014986) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121638250200103CADE000012345678MOBILEIMEI163825    15006121638JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 16:38:25 moniConsumer_revoked(014986) 
+attach to folder system ok !
+
+2012/06/12 16:38:25 moniConsumer_revoked(014986) 
+folder myFid=1
+
+2012/06/12 16:38:25 moniConsumer_revoked(014986) 
+Write finished,Write length =0
+
+2012/06/12 16:38:25 moniConsumer_revoked(014986) 
+AppServer terminated.
+
+2012/06/12 16:41:56 moniConsumer_revoked(014995) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 16:41:56 moniConsumer_revoked(014995) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 16:41:56 moniConsumer_revoked(014995) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121641560200103CADE000012345678MOBILEIMEI164156    15006121641JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 16:41:56 moniConsumer_revoked(014995) 
+attach to folder system ok !
+
+2012/06/12 16:41:56 moniConsumer_revoked(014995) 
+folder myFid=1
+
+2012/06/12 16:41:56 moniConsumer_revoked(014995) 
+Write finished,Write length =0
+
+2012/06/12 16:41:56 moniConsumer_revoked(014995) 
+AppServer terminated.
+
+2012/06/12 16:51:28 moniConsumer_revoked(015001) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 16:51:28 moniConsumer_revoked(015001) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 16:51:28 moniConsumer_revoked(015001) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121651280200103CADE000012345678MOBILEIMEI165128    15006121651JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 16:51:28 moniConsumer_revoked(015001) 
+attach to folder system ok !
+
+2012/06/12 16:51:28 moniConsumer_revoked(015001) 
+folder myFid=1
+
+2012/06/12 16:51:28 moniConsumer_revoked(015001) 
+Write finished,Write length =0
+
+2012/06/12 16:51:28 moniConsumer_revoked(015001) 
+AppServer terminated.
+
+2012/06/12 16:53:30 moniConsumer_revoked(015003) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 16:53:30 moniConsumer_revoked(015003) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 16:53:30 moniConsumer_revoked(015003) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121653300200103CADE000012345678MOBILEIMEI165330    15006121653JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 16:53:30 moniConsumer_revoked(015003) 
+attach to folder system ok !
+
+2012/06/12 16:53:30 moniConsumer_revoked(015003) 
+folder myFid=1
+
+2012/06/12 16:53:30 moniConsumer_revoked(015003) 
+Write finished,Write length =0
+
+2012/06/12 16:53:30 moniConsumer_revoked(015003) 
+AppServer terminated.
+
+2012/06/12 17:00:26 moniConsumer_revoked(015011) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 17:00:26 moniConsumer_revoked(015011) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 17:00:26 moniConsumer_revoked(015011) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121700260200103CADE000012345678MOBILEIMEI170026    15006121700JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 17:00:26 moniConsumer_revoked(015011) 
+attach to folder system ok !
+
+2012/06/12 17:00:26 moniConsumer_revoked(015011) 
+folder myFid=1
+
+2012/06/12 17:00:26 moniConsumer_revoked(015011) 
+Write finished,Write length =0
+
+2012/06/12 17:00:26 moniConsumer_revoked(015011) 
+AppServer terminated.
+
+2012/06/12 17:09:37 moniConsumer_revoked(015026) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 17:09:37 moniConsumer_revoked(015026) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 17:09:37 moniConsumer_revoked(015026) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121709370200103CADE000012345678MOBILEIMEI170937    15006121709JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 17:09:37 moniConsumer_revoked(015026) 
+attach to folder system ok !
+
+2012/06/12 17:09:37 moniConsumer_revoked(015026) 
+folder myFid=1
+
+2012/06/12 17:09:37 moniConsumer_revoked(015026) 
+Write finished,Write length =0
+
+2012/06/12 17:09:37 moniConsumer_revoked(015026) 
+AppServer terminated.
+
+2012/06/12 17:10:12 moniConsumer_revoked(015086) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 17:10:12 moniConsumer_revoked(015086) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 17:10:12 moniConsumer_revoked(015086) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121710120200103CADE000012345678MOBILEIMEI171012    15006121710JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 17:10:12 moniConsumer_revoked(015086) 
+attach to folder system ok !
+
+2012/06/12 17:10:12 moniConsumer_revoked(015086) 
+folder myFid=1
+
+2012/06/12 17:10:12 moniConsumer_revoked(015086) 
+Write finished,Write length =0
+
+2012/06/12 17:10:12 moniConsumer_revoked(015086) 
+AppServer terminated.
+
+2012/06/12 17:27:09 moniConsumer_revoked(015192) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 17:27:09 moniConsumer_revoked(015192) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 17:27:09 moniConsumer_revoked(015192) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121727090200103CADE000012345678MOBILEIMEI172709    15006121727JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 17:27:09 moniConsumer_revoked(015192) 
+attach to folder system ok !
+
+2012/06/12 17:27:09 moniConsumer_revoked(015192) 
+folder myFid=1
+
+2012/06/12 17:27:09 moniConsumer_revoked(015192) 
+Write finished,Write length =0
+
+2012/06/12 17:27:09 moniConsumer_revoked(015192) 
+AppServer terminated.
+
+2012/06/12 17:44:28 moniConsumer_revoked(015218) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 17:44:28 moniConsumer_revoked(015218) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 17:44:28 moniConsumer_revoked(015218) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121744280200103CADE000012345678MOBILEIMEI174428    15006121744JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 17:44:28 moniConsumer_revoked(015218) 
+attach to folder system ok !
+
+2012/06/12 17:44:28 moniConsumer_revoked(015218) 
+folder myFid=1
+
+2012/06/12 17:44:28 moniConsumer_revoked(015218) 
+Write finished,Write length =0
+
+2012/06/12 17:44:28 moniConsumer_revoked(015218) 
+AppServer terminated.
+
+2012/06/12 17:59:19 moniConsumer_revoked(015226) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 17:59:19 moniConsumer_revoked(015226) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 17:59:19 moniConsumer_revoked(015226) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121759190200103CADE000012345678MOBILEIMEI175919    15006121759JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 17:59:19 moniConsumer_revoked(015226) 
+attach to folder system ok !
+
+2012/06/12 17:59:19 moniConsumer_revoked(015226) 
+folder myFid=1
+
+2012/06/12 17:59:19 moniConsumer_revoked(015226) 
+Write finished,Write length =0
+
+2012/06/12 17:59:19 moniConsumer_revoked(015226) 
+AppServer terminated.
+
+2012/06/12 18:00:36 moniConsumer_revoked(015316) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 18:00:36 moniConsumer_revoked(015316) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 18:00:36 moniConsumer_revoked(015316) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121800360200103CADE000012345678MOBILEIMEI180036    15006121800JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 18:00:36 moniConsumer_revoked(015316) 
+attach to folder system ok !
+
+2012/06/12 18:00:36 moniConsumer_revoked(015316) 
+folder myFid=1
+
+2012/06/12 18:00:36 moniConsumer_revoked(015316) 
+Write finished,Write length =0
+
+2012/06/12 18:00:36 moniConsumer_revoked(015316) 
+AppServer terminated.
+
+2012/06/12 18:12:19 moniConsumer_revoked(015346) 
+模拟支付系统消费撤销报文 start
+
+2012/06/12 18:12:19 moniConsumer_revoked(015346) 
+生产环境上的测试，只能全额撤销
+
+2012/06/12 18:12:19 moniConsumer_revoked(015346) 
+ewp data moniConsumer_revoked return[175]:0200200000201206121812190200103CADE000012345678MOBILEIMEI181219    15006121812JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/12 18:12:19 moniConsumer_revoked(015346) 
+attach to folder system ok !
+
+2012/06/12 18:12:19 moniConsumer_revoked(015346) 
+folder myFid=1
+
+2012/06/12 18:12:19 moniConsumer_revoked(015346) 
+Write finished,Write length =0
+
+2012/06/12 18:12:19 moniConsumer_revoked(015346) 
+AppServer terminated.
+
+2012/06/13 09:53:17 moniConsumer_revoked(016432) 
+模拟支付系统消费撤销报文 start
+
+2012/06/13 09:53:17 moniConsumer_revoked(016432) 
+生产环境上的测试，只能全额撤销
+
+2012/06/13 09:53:17 moniConsumer_revoked(016432) 
+ewp data moniConsumer_revoked return[175]:0200200000201206120953170200103CADE000012345678MOBILEIMEI095317    15006130953JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/13 09:53:17 moniConsumer_revoked(016432) 
+attach to folder system ok !
+
+2012/06/13 09:53:17 moniConsumer_revoked(016432) 
+folder myFid=1
+
+2012/06/13 09:53:17 moniConsumer_revoked(016432) 
+Write finished,Write length =0
+
+2012/06/13 09:53:17 moniConsumer_revoked(016432) 
+AppServer terminated.
+
+2012/06/13 09:54:49 moniConsumer_revoked(016434) 
+模拟支付系统消费撤销报文 start
+
+2012/06/13 09:54:49 moniConsumer_revoked(016434) 
+生产环境上的测试，只能全额撤销
+
+2012/06/13 09:54:49 moniConsumer_revoked(016434) 
+ewp data moniConsumer_revoked return[175]:0200200000201206120954490200103CADE000012345678MOBILEIMEI095449    15006130954JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/13 09:54:49 moniConsumer_revoked(016434) 
+attach to folder system ok !
+
+2012/06/13 09:54:49 moniConsumer_revoked(016434) 
+folder myFid=1
+
+2012/06/13 09:54:49 moniConsumer_revoked(016434) 
+Write finished,Write length =0
+
+2012/06/13 09:54:49 moniConsumer_revoked(016434) 
+AppServer terminated.
+
+2012/06/13 09:58:10 moniConsumer_revoked(016437) 
+模拟支付系统消费撤销报文 start
+
+2012/06/13 09:58:10 moniConsumer_revoked(016437) 
+生产环境上的测试，只能全额撤销
+
+2012/06/13 09:58:10 moniConsumer_revoked(016437) 
+ewp data moniConsumer_revoked return[175]:0200200000201206120958100200103CADE000012345678MOBILEIMEI095810    15006130958JW120608185502794                    524622202100109855081418545631518301234500000420120612184944.
+
+2012/06/13 09:58:10 moniConsumer_revoked(016437) 
+attach to folder system ok !
+
+2012/06/13 09:58:10 moniConsumer_revoked(016437) 
+folder myFid=1
+
+2012/06/13 09:58:10 moniConsumer_revoked(016437) 
+Write finished,Write length =0
+
+2012/06/13 09:58:10 moniConsumer_revoked(016437) 
+AppServer terminated.
+
+2012/06/13 12:36:09 moniConsumer_revoked(017231) 
+模拟支付系统消费撤销报文 start
+
+2012/06/13 12:36:09 moniConsumer_revoked(017231) 
+生产环境上的测试，只能全额撤销
+
+2012/06/13 12:36:09 moniConsumer_revoked(017231) 
+ewp data moniConsumer_revoked return[175]:0200200000201206131236090200103CADE000012345678MOBILEIMEI123609    15006131236JW120608185502794                    524622202100109855081418545631518301234500000420120608184944.
+
+2012/06/13 12:36:09 moniConsumer_revoked(017231) 
+attach to folder system ok !
+
+2012/06/13 12:36:09 moniConsumer_revoked(017231) 
+folder myFid=1
+
+2012/06/13 12:36:09 moniConsumer_revoked(017231) 
+Write finished,Write length =0
+
+2012/06/13 12:36:09 moniConsumer_revoked(017231) 
+AppServer terminated.
+
+2012/06/13 12:40:05 moniConsumer_revoked(017304) 
+模拟支付系统消费撤销报文 start
+
+2012/06/13 12:40:05 moniConsumer_revoked(017304) 
+生产环境上的测试，只能全额撤销
+
+2012/06/13 12:40:05 moniConsumer_revoked(017304) 
+ewp data moniConsumer_revoked return[175]:0200200000201206131240050200103CADE000012345678MOBILEIMEI124005    15006131240JW120608185502794                    524622202100109855081418545631518301234500000420120608184944.
+
+2012/06/13 12:40:05 moniConsumer_revoked(017304) 
+attach to folder system ok !
+
+2012/06/13 12:40:05 moniConsumer_revoked(017304) 
+folder myFid=1
+
+2012/06/13 12:40:05 moniConsumer_revoked(017304) 
+Write finished,Write length =0
+
+2012/06/13 12:40:05 moniConsumer_revoked(017304) 
+AppServer terminated.
+
+2012/06/13 13:08:03 moniConsumer_revoked(017403) 
+模拟支付系统消费撤销报文 start
+
+2012/06/13 13:08:03 moniConsumer_revoked(017403) 
+生产环境上的测试，只能全额撤销
+
+2012/06/13 13:08:03 moniConsumer_revoked(017403) 
+ewp data moniConsumer_revoked return[175]:0200200000201206131308030200103CADE000012345678MOBILEIMEI130803    15006131308JW120608185502794                    524622202100109855081418545631518301234500000420120608184944.
+
+2012/06/13 13:08:03 moniConsumer_revoked(017403) 
+attach to folder system ok !
+
+2012/06/13 13:08:03 moniConsumer_revoked(017403) 
+folder myFid=1
+
+2012/06/13 13:08:03 moniConsumer_revoked(017403) 
+Write finished,Write length =0
+
+2012/06/13 13:08:03 moniConsumer_revoked(017403) 
+AppServer terminated.
+
+2012/06/13 13:10:57 moniConsumer_revoked(017408) 
+模拟支付系统消费撤销报文 start
+
+2012/06/13 13:10:57 moniConsumer_revoked(017408) 
+生产环境上的测试，只能全额撤销
+
+2012/06/13 13:10:57 moniConsumer_revoked(017408) 
+ewp data moniConsumer_revoked return[175]:0200200000201206131310570200103CADE000012345678MOBILEIMEI131057    15006131310JW120608185502794                    524622202100109855081418545631518301234500000420120608184944.
+
+2012/06/13 13:10:57 moniConsumer_revoked(017408) 
+attach to folder system ok !
+
+2012/06/13 13:10:57 moniConsumer_revoked(017408) 
+folder myFid=1
+
+2012/06/13 13:10:57 moniConsumer_revoked(017408) 
+Write finished,Write length =0
+
+2012/06/13 13:10:57 moniConsumer_revoked(017408) 
+AppServer terminated.
+
+2012/06/13 13:12:14 moniConsumer_revoked(017473) 
+模拟支付系统消费撤销报文 start
+
+2012/06/13 13:12:14 moniConsumer_revoked(017473) 
+生产环境上的测试，只能全额撤销
+
+2012/06/13 13:12:14 moniConsumer_revoked(017473) 
+ewp data moniConsumer_revoked return[175]:0200200000201206131312140200103CADE000012345678MOBILEIMEI131214    15006131312JW120608185502794                    524622202100109855081418545631518301234500000420120613184944.
+
+2012/06/13 13:12:14 moniConsumer_revoked(017473) 
+attach to folder system ok !
+
+2012/06/13 13:12:14 moniConsumer_revoked(017473) 
+folder myFid=1
+
+2012/06/13 13:12:14 moniConsumer_revoked(017473) 
+Write finished,Write length =0
+
+2012/06/13 13:12:14 moniConsumer_revoked(017473) 
+AppServer terminated.
+

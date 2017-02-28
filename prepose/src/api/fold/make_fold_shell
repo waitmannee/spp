@@ -1,0 +1,60 @@
+#! /bin/ksh
+
+# function to print usage message to user
+
+############################################################################
+#                       main function goes here
+#############################################################################
+
+#cleanup
+
+cd  $HOME/prepose/src/api/fold
+
+#stop ipc
+cd ./ipc
+rm -rf ./*.o
+make
+rm -rf ./*.o
+
+#start mbuf
+cd ../mbuf
+rm -rf ./*.o
+make
+rm -rf ./*.o
+
+#start util
+cd ../util
+rm -rf ./*.o
+make
+rm -rf ./*.o
+
+#start folder
+cd ../folder
+rm -rf ./*.o
+make
+rm -rf ./*.o
+
+
+#cd objs
+cd ../objs
+
+cp  $HOME/prepose/src/temp/lib/libdcsutil.a .
+
+ar x libbuf.a
+ar x libfolder.a
+ar x libutil.a
+ar x libipc.a
+ar x libdcsutil.a
+
+rm -rf ./*.a
+
+ar rs libfold.a   ./*.o
+
+rm -rf ./*.o
+
+mv libfold.a $HOME/prepose/src/temp/lib/
+
+
+
+
+

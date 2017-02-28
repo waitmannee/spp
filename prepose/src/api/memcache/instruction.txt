@@ -1,0 +1,60 @@
+libmem库使用操作手册
+libmem和memcached服务器是长连接，在服务启动时，默认启动的连接数num介于[1,4]
+当并发量很大时，会启配置的最大的max条长连接
+
+*****）在服务的最开始就启配置的最大的链接数，目前实现不了 -_- 
+首先需要在/var/www/pro/xpep/current/run/config文件夹下添加配置文件memcachede_new.conf
+添加如下的配置，添加需要访问的memcached服务器的IP和端口，
+#
+# terminal confiuration
+#
+
+comm.max   4
+
+#       ID   	remoteAddr:port 	   	
+comm     1   192.168.20.130:11211             
+comm     2   192.168.20.130:11211                  
+comm     3   192.168.20.130:11211                  
+comm     4   192.168.20.130:11211    
+
+
+
+1:调用 Mem_SavaKey 保存数据到memcached服务器上，默认保存一天就是24*60*60 =>86400
+/*
+	函数名称：Mem_SavaKey
+	函数功能：
+	保存数据到memcached服务器上
+	输入参数：key->需要保存的key
+			  value->需要保存的value值
+			  value_len->想要保存的value的长度
+	返回值：-1:表示保存信息失败
+			0：表示保存信息成功
+*/
+int Mem_SavaKey(char *key, char *value, int value_len);
+
+2:调用 Mem_GetKey 从memcached服务器上取数据
+/*
+	函数名称：Mem_GetKey 
+	函数功能：从memcached服务器上取数据
+	输入参数:
+		key：想要取出value值的key
+		value_buffer：用来存放value值的缓冲区长度
+	输出参数：
+		value:从memcached取到的key对应的value值
+		value_len:取出的value值的长度
+	返回值：
+		-1：处理失败
+		0：处理成功
+*/
+int Mem_GetKey(char *key, char *value, int *value_len, int value_buffer);
+
+3:调用 Mem_DeleteKey 删除memcached服务器上的数据
+/*
+函数功能：从memcached服务删除数据
+函数名称：Mem_DeleteKey
+输入参数：key->需要删除的key
+返回值：-1：删除key处理失败
+	     0：删除key处理成功
+*/
+int Mem_DeleteKey(char *key);
+

@@ -1,0 +1,27 @@
+#! /bin/ksh
+
+# function to print usage message to user
+
+############################################################################
+#                       main function goes here
+#############################################################################
+
+#cleanup
+
+cd $HOME/prepose/src/api/dcs
+
+rm -rf ./*.o 
+
+#cd ..
+make
+
+cp  $HOME/prepose/src/temp/lib/libiso8583.a .
+ar x libiso8583.a
+ar x libdcs.a
+
+rm -rf ./*.a
+ar rs libdcs.a   ./*.o
+
+rm -rf ./*.o
+
+mv libdcs.a $HOME/prepose/src/temp/lib

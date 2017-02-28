@@ -1,0 +1,8 @@
+
+#src
+cd $HOME/prepose/src/termSys
+make
+
+cd $HOME/prepose/run
+cp -Rf ./bin/*  /var/xpep/run/bin/
+ 

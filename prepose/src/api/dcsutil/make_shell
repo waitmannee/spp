@@ -1,0 +1,26 @@
+#! /bin/ksh
+
+# function to print usage message to user
+
+############################################################################
+#                       main function goes here
+#############################################################################
+
+
+#cd ..
+make
+
+cp   $HOME/prepose/src/temp/lib/libbsd.a .
+ar x libbsd.a
+ar x libdcsutil.a
+
+rm -rf ./*.a
+ar rs libdcsutil.a   ./*.o
+
+rm -rf ./*.o
+
+mv libdcsutil.a $HOME/prepose/src/temp/lib
+
+
+
+
